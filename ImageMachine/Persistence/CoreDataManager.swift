@@ -10,7 +10,6 @@ import CoreData
 
 final class CoreDataManager {
     
-    /// The current singleton instance of the manager.
     static let current = CoreDataManager()
     
     private let stack: CoreDataStack
@@ -19,18 +18,13 @@ final class CoreDataManager {
     private init() {
         stack = CoreDataStack()
         managedContext = stack.managedContext
-        DataArrayTransformer.register()
     }
     
-    /// Saving a Machine model into CoreData model
-    /// - Parameter machine: The Machine model object to save
     func saveMachine(_ machine: MachineModel) {
         let enitity = machine.asEntity(with: managedContext)
         stack.saveContext()
     }
     
-    /// Getting all of the saved Machines objects
-    /// - Returns: Returns all of the Machine model objects
     func getAllMachines() -> [MachineModel] {
         let fetchRequest: NSFetchRequest<MachineEntity> = MachineEntity.fetchRequest()
         var requestResult = [MachineModel]()

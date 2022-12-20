@@ -9,14 +9,18 @@ import UIKit
 
 final class DataVC: BaseVC {
     
+    private typealias DataSource = UITableViewDiffableDataSource<Int, MachineModel>
+    private typealias Snapshot = NSDiffableDataSourceSnapshot<Int, MachineModel>
+    
     private var dataTableView: UITableView! = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.separatorStyle = .none
+        tableView.separatorStyle = .singleLine
         return tableView
     }()
     
     private var viewModel: DataVM!
+    private var dataSource: DataSource!
     
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -32,11 +36,17 @@ final class DataVC: BaseVC {
         super.setupUI()
         title = "Data"
         navigationController?.navigationBar.prefersLargeTitles = true
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addAction))
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Sort", style: .plain, target: self, action: #selector(sortAction))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add,
+                                                            target: self,
+                                                            action: #selector(addAction))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Sort",
+                                                           style: .plain,
+                                                           target: self,
+                                                           action: #selector(sortAction))
         
-//        dataTableView.delegate = self
-//        dataTableView.dataSource = self
+        dataTableView.delegate = self
+        dataTableView.register(DataListCell.self,
+                               forCellReuseIdentifier: DataListCell.REUSE_IDENTIFIER)
         view.addSubview(dataTableView)
         
         NSLayoutConstraint.activate([
@@ -45,14 +55,45 @@ final class DataVC: BaseVC {
             dataTableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0),
             dataTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 0),
         ])
+        
+        dataSource = DataSource(tableView: dataTableView,
+                                cellProvider: { [unowned self] tableView, indexPath, itemIdentifier in
+            let cell = tableView.dequeueReusableCell(withIdentifier: DataListCell.REUSE_IDENTIFIER) as! DataListCell
+            let model = self.viewModel.machines[indexPath.row]
+            cell.setupContents(model)
+            return cell
+        })
     }
     
     override func setupBindings() {
-        
+        viewModel.$machines
+            .receive(on: RunLoop.main)
+            .sink { [unowned self] _ in
+                self.setupSnapshot()
+            }.store(in: &disposables)
+    }
+    
+    private func setupSnapshot() {
+        var snapshot = Snapshot()
+        snapshot.appendSections([0])
+        snapshot.appendItems(viewModel.machines)
+        dataSource.apply(snapshot, animatingDifferences: true)
     }
     
     @objc private func addAction() {
-
+        /*
+        let image = UIImage(named: "swiftlogo")!
+        let imageArray: Array<UIImage> = [image, image, image]
+        let transformedArray = imageArray.transformToData()
+        
+        let machine = MachineModel(name: "Another test",
+                                   type: "Test",
+                                   qrNumber: 123456789,
+                                   maintenanceDate: Date(),
+                                   images: transformedArray)
+        CoreDataManager.current.saveMachine(machine)
+        */
+        viewModel.routeToAddData()
     }
     
     @objc private func sortAction() {
@@ -60,20 +101,12 @@ final class DataVC: BaseVC {
     }
 }
 
-extension DataVC: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        10
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        UITableViewCell()
-    }
-    
+extension DataVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        50
+        80
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }

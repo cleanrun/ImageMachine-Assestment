@@ -8,7 +8,7 @@
 import Foundation
 import CoreData
 
-struct MachineModel {
+struct MachineModel: Hashable {
     let machineId: UUID
     let name: String
     let type: String
@@ -39,9 +39,6 @@ struct MachineModel {
 
 extension MachineModel {
     
-    /// Transform the model into a CoreData entity class
-    /// - Parameter context: The `NSManagedObjectContext` of the CoreData model
-    /// - Returns: Returns the transformed entity object
     func asEntity(with context: NSManagedObjectContext) -> MachineEntity {
         let transformedImages = images.compactMap {
             NSData(data: $0)

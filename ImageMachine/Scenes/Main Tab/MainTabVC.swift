@@ -14,22 +14,15 @@ final class MainTabVC: UITabBarController {
         setupViewControllers()
     }
     
-    /// Setting up the view controllers required for the tab bar to display
     private func setupViewControllers() {
         viewControllers = [
             createNavController(for: DataVC(), title: "Data", icon: "list.bullet"),
             createNavController(for: ReaderVC(type: .detect), title: "Reader", icon: "qrcode.viewfinder")
         ]
         
-        tabBar.backgroundColor = .white
+        tabBar.isTranslucent = true
     }
     
-    /// Creates a `UINavigationController` for managing the tab navigation flow.
-    /// - Parameters:
-    ///   - vc: The root view controller of the navigation controller
-    ///   - title: The `UITabBarItem` title for displaying the title on the tab bar
-    ///   - icon: The `UITabBarItem` system image name for displaying the title on the tab bar
-    /// - Returns: Returns the navigaton controller
     private func createNavController(for vc: UIViewController,
                                      title: String,
                                      icon: String) -> UINavigationController {

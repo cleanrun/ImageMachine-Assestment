@@ -11,11 +11,19 @@ import Combine
 final class DataVM: BaseVM {
     private weak var viewController: DataVC?
     
+    @Published private(set) var machines: [MachineModel] = []
+    
     init(vc: DataVC? = nil) {
         self.viewController = vc
+        super.init()
+        getAllData()
+    }
+    
+    func getAllData() {
+        machines = dataManager.getAllMachines()
     }
     
     func routeToAddData() {
-        
+        viewController?.navigationController?.pushViewController(AddDataVC(), animated: true)
     }
 }

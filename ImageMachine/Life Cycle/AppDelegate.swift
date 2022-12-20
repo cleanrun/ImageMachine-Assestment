@@ -11,6 +11,7 @@ import UIKit
     
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        DataArrayTransformer.register()
         return true
     }
     

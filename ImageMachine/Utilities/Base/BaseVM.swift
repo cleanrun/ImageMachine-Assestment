@@ -9,6 +9,6 @@ import Foundation
 import Combine
 
 class BaseVM: ObservableObject {
-    /// A `Set` to store any active Combine subscriptions.
     var disposables = Set<AnyCancellable>()
+    var dataManager = CoreDataManager.current
 }

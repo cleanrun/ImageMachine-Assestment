@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21512" systemVersion="21G217" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="MachineEntity" representedClassName="MachineEntity" syncable="YES">
-        <attribute name="images" optional="YES" attributeType="Transformable" valueTransformerName="ImageArrayTransformer" customClassName="[NSData]"/>
+        <attribute name="images" optional="YES" attributeType="Transformable" valueTransformerName="DataArrayTransformer" customClassName="[NSData]"/>
         <attribute name="machineId" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="maintenanceDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="name" optional="YES" attributeType="String"/>
