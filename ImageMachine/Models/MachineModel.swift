@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CoreData
 
 struct MachineModel {
     let machineId: UUID
@@ -14,4 +15,45 @@ struct MachineModel {
     let qrNumber: Int
     let maintenanceDate: Date
     let images: [Data]
+    
+    init(machineId: UUID = UUID(), name: String, type: String, qrNumber: Int, maintenanceDate: Date, images: [Data]) {
+        self.machineId = machineId
+        self.name = name
+        self.type = type
+        self.qrNumber = qrNumber
+        self.maintenanceDate = maintenanceDate
+        self.images = images
+    }
+    
+    init(from entity: MachineEntity) {
+        self.machineId = entity.machineId!
+        self.name = entity.name!
+        self.type = entity.type!
+        self.qrNumber = Int(entity.qrNumber)
+        self.maintenanceDate = entity.maintenanceDate!
+        self.images = (entity.images?.compactMap {
+            Data($0)
+        })!
+    }
+}
+
+extension MachineModel {
+    
+    /// Transform the model into a CoreData entity class
+    /// - Parameter context: The `NSManagedObjectContext` of the CoreData model
+    /// - Returns: Returns the transformed entity object
+    func asEntity(with context: NSManagedObjectContext) -> MachineEntity {
+        let transformedImages = images.compactMap {
+            NSData(data: $0)
+        }
+        
+        let entity = MachineEntity(context: context)
+        entity.setValue(machineId, forKey: #keyPath(MachineEntity.machineId))
+        entity.setValue(name, forKey: #keyPath(MachineEntity.name))
+        entity.setValue(type, forKey: #keyPath(MachineEntity.type))
+        entity.setValue(Int32(qrNumber), forKey: #keyPath(MachineEntity.qrNumber))
+        entity.setValue(maintenanceDate, forKey: #keyPath(MachineEntity.maintenanceDate))
+        entity.setValue(transformedImages, forKey: #keyPath(MachineEntity.images))
+        return entity
+    }
 }

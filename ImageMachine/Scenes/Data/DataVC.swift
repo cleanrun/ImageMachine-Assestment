@@ -33,6 +33,7 @@ final class DataVC: BaseVC {
         title = "Data"
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addAction))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Sort", style: .plain, target: self, action: #selector(sortAction))
         
 //        dataTableView.delegate = self
 //        dataTableView.dataSource = self
@@ -51,9 +52,18 @@ final class DataVC: BaseVC {
     }
     
     @objc private func addAction() {
+        let image = UIImage(named: "swiftlogo")!
+        let imageArray: Array<UIImage> = [image, image]
+        let transformedArray = imageArray.transformToData()
+        let currentManager = CoreDataManager.current
+        
+        let model = MachineModel(name: "Test", type: "Test", qrNumber: 1234, maintenanceDate: Date(), images: transformedArray)
+        currentManager.saveMachine(model)
+    }
+    
+    @objc private func sortAction() {
         
     }
-
 }
 
 extension DataVC: UITableViewDelegate, UITableViewDataSource {

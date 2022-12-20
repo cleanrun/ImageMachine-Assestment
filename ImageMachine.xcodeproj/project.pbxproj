@@ -21,6 +21,10 @@
 		B84E2BFA2951827F000230DD /* BaseVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84E2BF92951827F000230DD /* BaseVM.swift */; };
 		B84E2BFC29518728000230DD /* ReaderVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84E2BFB29518728000230DD /* ReaderVM.swift */; };
 		B84E2BFF295195AA000230DD /* MachineModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84E2BFE295195AA000230DD /* MachineModel.swift */; };
+		B84E2C0129519AAA000230DD /* ImageArrayTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84E2C0029519AAA000230DD /* ImageArrayTransformer.swift */; };
+		B84E2C042951A0B9000230DD /* MachineEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84E2C022951A0B9000230DD /* MachineEntity+CoreDataClass.swift */; };
+		B84E2C052951A0B9000230DD /* MachineEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84E2C032951A0B9000230DD /* MachineEntity+CoreDataProperties.swift */; };
+		B84E2C072951A69E000230DD /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84E2C062951A69E000230DD /* Array+Extension.swift */; };
 		B8E1E3332950A78900EE6BD1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E1E3322950A78900EE6BD1 /* AppDelegate.swift */; };
 		B8E1E3352950A78900EE6BD1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E1E3342950A78900EE6BD1 /* SceneDelegate.swift */; };
 		B8E1E33C2950A78A00EE6BD1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B8E1E33B2950A78A00EE6BD1 /* Assets.xcassets */; };
@@ -42,6 +46,10 @@
 		B84E2BF92951827F000230DD /* BaseVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseVM.swift; sourceTree = "<group>"; };
 		B84E2BFB29518728000230DD /* ReaderVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReaderVM.swift; sourceTree = "<group>"; };
 		B84E2BFE295195AA000230DD /* MachineModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MachineModel.swift; sourceTree = "<group>"; };
+		B84E2C0029519AAA000230DD /* ImageArrayTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageArrayTransformer.swift; sourceTree = "<group>"; };
+		B84E2C022951A0B9000230DD /* MachineEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MachineEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
+		B84E2C032951A0B9000230DD /* MachineEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MachineEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		B84E2C062951A69E000230DD /* Array+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
 		B8E1E32F2950A78900EE6BD1 /* ImageMachine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImageMachine.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8E1E3322950A78900EE6BD1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B8E1E3342950A78900EE6BD1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -93,8 +101,11 @@
 			isa = PBXGroup;
 			children = (
 				B84E2BD729517798000230DD /* Machine.xcdatamodeld */,
+				B84E2C022951A0B9000230DD /* MachineEntity+CoreDataClass.swift */,
+				B84E2C032951A0B9000230DD /* MachineEntity+CoreDataProperties.swift */,
 				B84E2BDA295178F4000230DD /* CoreDataStack.swift */,
 				B84E2BDC29517B02000230DD /* CoreDataManager.swift */,
+				B84E2C0029519AAA000230DD /* ImageArrayTransformer.swift */,
 			);
 			path = Persistence;
 			sourceTree = "<group>";
@@ -114,6 +125,7 @@
 			children = (
 				B84E2BD329517453000230DD /* UIView+Extension.swift */,
 				B84E2BD5295175D7000230DD /* UIStackView+Extension.swift */,
+				B84E2C062951A69E000230DD /* Array+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -278,13 +290,17 @@
 				B84E2BD429517453000230DD /* UIView+Extension.swift in Sources */,
 				B84E2BF52951801F000230DD /* DataVM.swift in Sources */,
 				B84E2BE529517C98000230DD /* DataVC.swift in Sources */,
+				B84E2C0129519AAA000230DD /* ImageArrayTransformer.swift in Sources */,
 				B84E2BF729518206000230DD /* BaseVC.swift in Sources */,
+				B84E2C072951A69E000230DD /* Array+Extension.swift in Sources */,
 				B84E2BD6295175D7000230DD /* UIStackView+Extension.swift in Sources */,
+				B84E2C042951A0B9000230DD /* MachineEntity+CoreDataClass.swift in Sources */,
 				B84E2BDD29517B02000230DD /* CoreDataManager.swift in Sources */,
 				B8E1E3352950A78900EE6BD1 /* SceneDelegate.swift in Sources */,
 				B84E2BE029517C5D000230DD /* MainTabVC.swift in Sources */,
 				B84E2BFC29518728000230DD /* ReaderVM.swift in Sources */,
 				B84E2BFA2951827F000230DD /* BaseVM.swift in Sources */,
+				B84E2C052951A0B9000230DD /* MachineEntity+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
