@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 final class DataVM: BaseVM {
-    weak var viewController: DataVC?
+    private weak var viewController: DataVC?
     
     init(vc: DataVC? = nil) {
         self.viewController = vc

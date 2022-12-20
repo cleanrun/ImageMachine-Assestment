@@ -17,9 +17,11 @@ final class MainTabVC: UITabBarController {
     /// Setting up the view controllers required for the tab bar to display
     private func setupViewControllers() {
         viewControllers = [
-            createNavController(for: DataVC(), title: "Data", icon: "list.bullet.clipboard"),
-            createNavController(for: ReaderVC(), title: "Reader", icon: "qrcode.viewfinder")
+            createNavController(for: DataVC(), title: "Data", icon: "list.bullet"),
+            createNavController(for: ReaderVC(type: .detect), title: "Reader", icon: "qrcode.viewfinder")
         ]
+        
+        tabBar.backgroundColor = .white
     }
     
     /// Creates a `UINavigationController` for managing the tab navigation flow.

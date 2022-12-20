@@ -10,6 +10,20 @@ import Combine
 
 class BaseVC: UIViewController {
     
+    /// The current device's screen width
+    var deviceWidth: CGFloat {
+        get {
+            UIScreen.main.bounds.width
+        }
+    }
+    
+    /// The current device's screen height
+    var deviceHeight: CGFloat {
+        get {
+            UIScreen.main.bounds.height
+        }
+    }
+    
     /// A `Set` to store any active Combine subscriptions.
     var disposables = Set<AnyCancellable>()
     
@@ -18,7 +32,6 @@ class BaseVC: UIViewController {
         setupUI()
         setupBindings()
     }
-    
     
     /// Setting up the UI based on the controller's needs.
     ///

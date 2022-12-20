@@ -1,5 +1,5 @@
 //
-//  ImageArrayTransformer.swift
+//  DataArrayTransformer.swift
 //  ImageMachine
 //
 //  Created by cleanmac-ada on 20/12/22.
@@ -8,7 +8,7 @@
 import Foundation
 import CoreData
 
-final class ImageArrayTransformer: NSSecureUnarchiveFromDataTransformer {
+final class DataArrayTransformer: NSSecureUnarchiveFromDataTransformer {
     override class func allowsReverseTransformation() -> Bool {
         true
     }
@@ -36,12 +36,10 @@ final class ImageArrayTransformer: NSSecureUnarchiveFromDataTransformer {
     }
 
     static func register() {
-        let className = String(describing: ImageArrayTransformer.self)
+        let className = String(describing: DataArrayTransformer.self)
         let name = NSValueTransformerName(className)
-        let transformer = ImageArrayTransformer()
+        let transformer = DataArrayTransformer()
 
         ValueTransformer.setValueTransformer(transformer, forName: name)
     }
 }
-
-

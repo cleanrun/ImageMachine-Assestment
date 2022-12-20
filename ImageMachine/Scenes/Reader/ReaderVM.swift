@@ -9,9 +9,16 @@ import Foundation
 import Combine
 
 final class ReaderVM: BaseVM {
-    weak var viewController: ReaderVC?
+    enum ReaderType {
+        case detect
+        case input
+    }
     
-    init(vc: ReaderVC? = nil) {
+    private weak var viewController: ReaderVC?
+    private let readerType: ReaderType
+    
+    init(vc: ReaderVC? = nil, type: ReaderType) {
         self.viewController = vc
+        self.readerType = type
     }
 }

@@ -52,13 +52,7 @@ final class DataVC: BaseVC {
     }
     
     @objc private func addAction() {
-        let image = UIImage(named: "swiftlogo")!
-        let imageArray: Array<UIImage> = [image, image]
-        let transformedArray = imageArray.transformToData()
-        let currentManager = CoreDataManager.current
-        
-        let model = MachineModel(name: "Test", type: "Test", qrNumber: 1234, maintenanceDate: Date(), images: transformedArray)
-        currentManager.saveMachine(model)
+
     }
     
     @objc private func sortAction() {
