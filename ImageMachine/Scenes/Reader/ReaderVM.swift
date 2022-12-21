@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+import UIKit
 
 final class ReaderVM: BaseVM {
     enum ReaderType {
@@ -15,10 +16,26 @@ final class ReaderVM: BaseVM {
     }
     
     private weak var viewController: ReaderVC?
-    private let readerType: ReaderType
+    let readerType: ReaderType
     
     init(vc: ReaderVC? = nil, type: ReaderType) {
         self.viewController = vc
         self.readerType = type
+    }
+    
+    func detectHandler(_ value: String) {
+        if let intValue = Int(value) {
+            if readerType == .detect {
+                viewController?.showQRResultAlert(result: intValue)
+            } else {
+                let presentingVc = viewController?.presentingViewController as! MainTabVC
+                let navVc = presentingVc.viewControllers?.first as! UINavigationController
+                let addDataVc = navVc.viewControllers.last as! AddDataVC
+                addDataVc.viewModel.qrNumber = intValue
+                viewController?.dismiss(animated: true)
+            }
+        } else {
+            viewController?.showQRResultErrorAlert()
+        }
     }
 }

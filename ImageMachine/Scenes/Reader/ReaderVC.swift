@@ -35,12 +35,17 @@ final class ReaderVC: BaseVC {
         }
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
+    override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         animateInfoLabel(false)
         if captureSession.isRunning {
             captureSession.stopRunning()
         }
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        previewLayer.frame = cameraView.bounds
     }
     
     override func setupUI() {
@@ -119,9 +124,21 @@ final class ReaderVC: BaseVC {
         captureSession.startRunning()
     }
     
-    private func showQRResultAlert(result: String) {
+    func showQRResultAlert(result: Int) {
         let alert = UIAlertController(title: "QR Code Result",
                                       message: "This QR contains a data: \(result)",
+                                      preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK",
+                                   style: .cancel) { [unowned self] _ in
+            self.captureSession.startRunning()
+        }
+        alert.addAction(action)
+        present(alert, animated: true)
+    }
+    
+    func showQRResultErrorAlert() {
+        let alert = UIAlertController(title: "QR Code Result Error",
+                                      message: "QR Code must only contain numbers",
                                       preferredStyle: .alert)
         let action = UIAlertAction(title: "OK",
                                    style: .cancel) { [unowned self] _ in
@@ -155,7 +172,7 @@ extension ReaderVC: AVCaptureMetadataOutputObjectsDelegate {
                   let stringValue = readableObject.stringValue
             else { return }
             AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
-            showQRResultAlert(result: stringValue)
+            viewModel.detectHandler(stringValue)
         }
     }
 }

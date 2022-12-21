@@ -28,9 +28,13 @@
 		B84E2C0B2951DF19000230DD /* AddDataVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84E2C0A2951DF19000230DD /* AddDataVC.swift */; };
 		B84E2C0D2951DF2A000230DD /* AddDataVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84E2C0C2951DF2A000230DD /* AddDataVM.swift */; };
 		B84E2C0F2951E4A8000230DD /* DataListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84E2C0E2951E4A8000230DD /* DataListCell.swift */; };
-		B84E2C112951EF52000230DD /* FormFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84E2C102951EF52000230DD /* FormFieldView.swift */; };
+		B84E2C112951EF52000230DD /* FormInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84E2C102951EF52000230DD /* FormInputView.swift */; };
 		B84E2C142951F1CF000230DD /* ViewControllerPreviewProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84E2C132951F1CF000230DD /* ViewControllerPreviewProvider.swift */; };
 		B84E2C182951FDB5000230DD /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84E2C172951FDB5000230DD /* UITextField+Extension.swift */; };
+		B84F32CD29528C8A00460B16 /* UIControlPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84F32CC29528C8A00460B16 /* UIControlPublisher.swift */; };
+		B84F32CF29528C9C00460B16 /* UIControlSubscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84F32CE29528C9C00460B16 /* UIControlSubscription.swift */; };
+		B84F32D129528D1E00460B16 /* UIControl+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84F32D029528D1E00460B16 /* UIControl+Extension.swift */; };
+		B84F32D32952902400460B16 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84F32D22952902400460B16 /* Date+Extension.swift */; };
 		B8E1E3332950A78900EE6BD1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E1E3322950A78900EE6BD1 /* AppDelegate.swift */; };
 		B8E1E3352950A78900EE6BD1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E1E3342950A78900EE6BD1 /* SceneDelegate.swift */; };
 		B8E1E33C2950A78A00EE6BD1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B8E1E33B2950A78A00EE6BD1 /* Assets.xcassets */; };
@@ -59,9 +63,13 @@
 		B84E2C0A2951DF19000230DD /* AddDataVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDataVC.swift; sourceTree = "<group>"; };
 		B84E2C0C2951DF2A000230DD /* AddDataVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDataVM.swift; sourceTree = "<group>"; };
 		B84E2C0E2951E4A8000230DD /* DataListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataListCell.swift; sourceTree = "<group>"; };
-		B84E2C102951EF52000230DD /* FormFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormFieldView.swift; sourceTree = "<group>"; };
+		B84E2C102951EF52000230DD /* FormInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormInputView.swift; sourceTree = "<group>"; };
 		B84E2C132951F1CF000230DD /* ViewControllerPreviewProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerPreviewProvider.swift; sourceTree = "<group>"; };
 		B84E2C172951FDB5000230DD /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
+		B84F32CC29528C8A00460B16 /* UIControlPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIControlPublisher.swift; sourceTree = "<group>"; };
+		B84F32CE29528C9C00460B16 /* UIControlSubscription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIControlSubscription.swift; sourceTree = "<group>"; };
+		B84F32D029528D1E00460B16 /* UIControl+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIControl+Extension.swift"; sourceTree = "<group>"; };
+		B84F32D22952902400460B16 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		B8E1E32F2950A78900EE6BD1 /* ImageMachine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImageMachine.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8E1E3322950A78900EE6BD1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B8E1E3342950A78900EE6BD1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -127,6 +135,7 @@
 			children = (
 				B84E2C122951F0D2000230DD /* Preview Provider */,
 				B84E2BF82951826E000230DD /* Base */,
+				B84F32CB29528C7700460B16 /* Combine */,
 				B84E2BD1295172D2000230DD /* Extensions */,
 				B84E2BFD29519404000230DD /* Reusable Views */,
 			);
@@ -139,7 +148,9 @@
 				B84E2BD329517453000230DD /* UIView+Extension.swift */,
 				B84E2BD5295175D7000230DD /* UIStackView+Extension.swift */,
 				B84E2C172951FDB5000230DD /* UITextField+Extension.swift */,
+				B84F32D029528D1E00460B16 /* UIControl+Extension.swift */,
 				B84E2C062951A69E000230DD /* Array+Extension.swift */,
+				B84F32D22952902400460B16 /* Date+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -191,7 +202,7 @@
 			isa = PBXGroup;
 			children = (
 				B84E2C0E2951E4A8000230DD /* DataListCell.swift */,
-				B84E2C102951EF52000230DD /* FormFieldView.swift */,
+				B84E2C102951EF52000230DD /* FormInputView.swift */,
 			);
 			path = "Reusable Views";
 			sourceTree = "<group>";
@@ -220,6 +231,15 @@
 				B84E2C132951F1CF000230DD /* ViewControllerPreviewProvider.swift */,
 			);
 			path = "Preview Provider";
+			sourceTree = "<group>";
+		};
+		B84F32CB29528C7700460B16 /* Combine */ = {
+			isa = PBXGroup;
+			children = (
+				B84F32CC29528C8A00460B16 /* UIControlPublisher.swift */,
+				B84F32CE29528C9C00460B16 /* UIControlSubscription.swift */,
+			);
+			path = Combine;
 			sourceTree = "<group>";
 		};
 		B8E1E3262950A78900EE6BD1 = {
@@ -328,7 +348,9 @@
 				B84E2BED29517D1E000230DD /* DataDetailVC.swift in Sources */,
 				B84E2BFF295195AA000230DD /* MachineModel.swift in Sources */,
 				B8E1E3332950A78900EE6BD1 /* AppDelegate.swift in Sources */,
+				B84F32D32952902400460B16 /* Date+Extension.swift in Sources */,
 				B84E2C0B2951DF19000230DD /* AddDataVC.swift in Sources */,
+				B84F32D129528D1E00460B16 /* UIControl+Extension.swift in Sources */,
 				B84E2BE729517CA4000230DD /* ReaderVC.swift in Sources */,
 				B84E2C142951F1CF000230DD /* ViewControllerPreviewProvider.swift in Sources */,
 				B84E2BD429517453000230DD /* UIView+Extension.swift in Sources */,
@@ -337,11 +359,13 @@
 				B84E2BE529517C98000230DD /* DataVC.swift in Sources */,
 				B84E2C0129519AAA000230DD /* DataArrayTransformer.swift in Sources */,
 				B84E2BF729518206000230DD /* BaseVC.swift in Sources */,
+				B84F32CF29528C9C00460B16 /* UIControlSubscription.swift in Sources */,
 				B84E2C0D2951DF2A000230DD /* AddDataVM.swift in Sources */,
 				B84E2C072951A69E000230DD /* Array+Extension.swift in Sources */,
 				B84E2BD6295175D7000230DD /* UIStackView+Extension.swift in Sources */,
+				B84F32CD29528C8A00460B16 /* UIControlPublisher.swift in Sources */,
 				B84E2C042951A0B9000230DD /* MachineEntity+CoreDataClass.swift in Sources */,
-				B84E2C112951EF52000230DD /* FormFieldView.swift in Sources */,
+				B84E2C112951EF52000230DD /* FormInputView.swift in Sources */,
 				B84E2BDD29517B02000230DD /* CoreDataManager.swift in Sources */,
 				B8E1E3352950A78900EE6BD1 /* SceneDelegate.swift in Sources */,
 				B84E2BE029517C5D000230DD /* MainTabVC.swift in Sources */,

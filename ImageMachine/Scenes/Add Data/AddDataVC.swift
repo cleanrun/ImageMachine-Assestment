@@ -24,22 +24,53 @@ final class AddDataVC: BaseVC {
         return stackView
     }()
     
-    private var nameField: FormFieldView = {
-        let field = FormFieldView()
+    private var nameField: FormInputView = {
+        let field = FormInputView(title: "Name")
         field.translatesAutoresizingMaskIntoConstraints = false
         return field
     }()
     
-    private var typeField: FormFieldView = {
-        let field = FormFieldView()
+    private var typeField: FormInputView = {
+        let field = FormInputView(title: "Type")
         field.translatesAutoresizingMaskIntoConstraints = false
         return field
     }()
     
-    private var dateField: FormFieldView = {
-        let field = FormFieldView()
+    private var qrField: FormInputView = {
+        let field = FormInputView(title: "QR Number", type: .button)
         field.translatesAutoresizingMaskIntoConstraints = false
         return field
+    }()
+    
+    private var dateField: FormInputView = {
+        let field = FormInputView(title: "Maintenance Date")
+        field.translatesAutoresizingMaskIntoConstraints = false
+        return field
+    }()
+    
+    private var addImagesButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("Add Images", for: .normal)
+        button.setTitleColor(.systemBlue, for: .normal)
+        button.titleLabel?.font = .systemFont(ofSize: 14)
+        return button
+    }()
+    
+    private var saveButtonContainerView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    private var saveButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.backgroundColor = .systemBlue
+        button.tintColor = .white
+        button.setTitle("Save", for: .normal)
+        button.layer.cornerRadius = 8
+        return button
     }()
     
     private var dateInputView: UIDatePicker = {
@@ -50,7 +81,7 @@ final class AddDataVC: BaseVC {
         return datePicker
     }()
     
-    private var viewModel: AddDataVM!
+    private(set) var viewModel: AddDataVM!
     
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -67,15 +98,26 @@ final class AddDataVC: BaseVC {
         title = "Add Data"
         navigationItem.largeTitleDisplayMode = .never
         
-        containerStackView.addArrangedSubviews(nameField, typeField, dateField)
+        containerStackView.addArrangedSubviews(nameField, typeField, qrField, dateField, addImagesButton)
         scrollView.addSubview(containerStackView)
-        view.addSubview(scrollView)
+        saveButtonContainerView.addSubview(saveButton)
+        view.addSubviews(saveButtonContainerView, scrollView)
         
         NSLayoutConstraint.activate([
+            saveButtonContainerView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
+            saveButtonContainerView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
+            saveButtonContainerView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 0),
+            saveButtonContainerView.heightAnchor.constraint(equalToConstant: 80),
+            
+            saveButton.leadingAnchor.constraint(equalTo: saveButtonContainerView.leadingAnchor, constant: 16),
+            saveButton.trailingAnchor.constraint(equalTo: saveButtonContainerView.trailingAnchor, constant: -16),
+            saveButton.topAnchor.constraint(equalTo: saveButtonContainerView.topAnchor, constant: 16),
+            saveButton.bottomAnchor.constraint(equalTo: saveButtonContainerView.bottomAnchor, constant: -16),
+            
             scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
             scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
-            scrollView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0),
-            scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0),
+            scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0),
+            scrollView.bottomAnchor.constraint(equalTo: saveButtonContainerView.topAnchor, constant: 0),
             
             containerStackView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 0),
             containerStackView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: 0),
@@ -83,9 +125,11 @@ final class AddDataVC: BaseVC {
             containerStackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: 0),
             containerStackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
             
-            nameField.heightAnchor.constraint(equalToConstant: FormFieldView.PREFERRED_HEIGHT),
-            typeField.heightAnchor.constraint(equalToConstant: FormFieldView.PREFERRED_HEIGHT),
-            dateField.heightAnchor.constraint(equalToConstant: FormFieldView.PREFERRED_HEIGHT)
+            nameField.heightAnchor.constraint(equalToConstant: FormInputView.PREFERRED_HEIGHT),
+            typeField.heightAnchor.constraint(equalToConstant: FormInputView.PREFERRED_HEIGHT),
+            dateField.heightAnchor.constraint(equalToConstant: FormInputView.PREFERRED_HEIGHT),
+            qrField.heightAnchor.constraint(equalToConstant: FormInputView.PREFERRED_HEIGHT),
+            addImagesButton.heightAnchor.constraint(equalToConstant: 50),
         ])
         
         dateField.setTextFieldInputView(dateInputView)
@@ -103,6 +147,47 @@ final class AddDataVC: BaseVC {
             .sink { [unowned self] value in
                 self.viewModel.type = value
             }.store(in: &disposables)
+        
+        qrField
+            .inputButtonPublisher
+            .sink { [unowned self] value in
+                self.viewModel.presentQrReader()
+            }.store(in: &disposables)
+        
+        dateInputView
+            .publisher(for: .valueChanged)
+            .sink { [unowned self] value in
+                self.viewModel.maintenanceDate = self.dateInputView.date
+            }.store(in: &disposables)
+        
+        addImagesButton
+            .publisher(for: .touchUpInside)
+            .sink { [unowned self] value in
+                
+            }.store(in: &disposables)
+        
+        saveButton
+            .publisher(for: .touchUpInside)
+            .sink { [unowned self] value in
+                //self.viewModel.saveMachine()
+            }.store(in: &disposables)
+        
+        viewModel
+            .$maintenanceDate
+            .sink { [unowned self] value in
+                self.dateField.setDateText(value)
+            }.store(in: &disposables)
+        
+        viewModel
+            .$qrNumber
+            .sink { [unowned self] value in
+                self.qrField.setInputButtonTitle(value == 0 ? "QR Scanner" : "\(value)")
+            }.store(in: &disposables)
+        
+        viewModel
+            .validation
+            .sink { [unowned self] value in
+                self.saveButton.isUserInteractionEnabled = value
+            }.store(in: &disposables)
     }
-    
 }
