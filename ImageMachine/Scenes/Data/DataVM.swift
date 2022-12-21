@@ -16,7 +16,6 @@ final class DataVM: BaseVM {
     init(vc: DataVC? = nil) {
         self.viewController = vc
         super.init()
-        getAllData()
     }
     
     func getAllData() {
@@ -25,5 +24,9 @@ final class DataVM: BaseVM {
     
     func routeToAddData() {
         viewController?.navigationController?.pushViewController(AddDataVC(), animated: true)
+    }
+    
+    func routeToDetailData() {
+        
     }
 }

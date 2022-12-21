@@ -48,7 +48,7 @@ extension MachineModel {
         entity.setValue(machineId, forKey: #keyPath(MachineEntity.machineId))
         entity.setValue(name, forKey: #keyPath(MachineEntity.name))
         entity.setValue(type, forKey: #keyPath(MachineEntity.type))
-        entity.setValue(Int32(qrNumber), forKey: #keyPath(MachineEntity.qrNumber))
+        entity.setValue(Int64(qrNumber), forKey: #keyPath(MachineEntity.qrNumber))
         entity.setValue(maintenanceDate, forKey: #keyPath(MachineEntity.maintenanceDate))
         entity.setValue(transformedImages, forKey: #keyPath(MachineEntity.images))
         return entity

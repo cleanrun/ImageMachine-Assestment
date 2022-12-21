@@ -35,6 +35,8 @@
 		B84F32CF29528C9C00460B16 /* UIControlSubscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84F32CE29528C9C00460B16 /* UIControlSubscription.swift */; };
 		B84F32D129528D1E00460B16 /* UIControl+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84F32D029528D1E00460B16 /* UIControl+Extension.swift */; };
 		B84F32D32952902400460B16 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84F32D22952902400460B16 /* Date+Extension.swift */; };
+		B84F32D52952C59700460B16 /* ImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84F32D42952C59700460B16 /* ImageCell.swift */; };
+		B84F32D72952DE1E00460B16 /* PHAsset+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84F32D62952DE1E00460B16 /* PHAsset+Extension.swift */; };
 		B8E1E3332950A78900EE6BD1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E1E3322950A78900EE6BD1 /* AppDelegate.swift */; };
 		B8E1E3352950A78900EE6BD1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E1E3342950A78900EE6BD1 /* SceneDelegate.swift */; };
 		B8E1E33C2950A78A00EE6BD1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B8E1E33B2950A78A00EE6BD1 /* Assets.xcassets */; };
@@ -70,6 +72,8 @@
 		B84F32CE29528C9C00460B16 /* UIControlSubscription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIControlSubscription.swift; sourceTree = "<group>"; };
 		B84F32D029528D1E00460B16 /* UIControl+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIControl+Extension.swift"; sourceTree = "<group>"; };
 		B84F32D22952902400460B16 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
+		B84F32D42952C59700460B16 /* ImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCell.swift; sourceTree = "<group>"; };
+		B84F32D62952DE1E00460B16 /* PHAsset+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PHAsset+Extension.swift"; sourceTree = "<group>"; };
 		B8E1E32F2950A78900EE6BD1 /* ImageMachine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImageMachine.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8E1E3322950A78900EE6BD1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B8E1E3342950A78900EE6BD1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -149,6 +153,7 @@
 				B84E2BD5295175D7000230DD /* UIStackView+Extension.swift */,
 				B84E2C172951FDB5000230DD /* UITextField+Extension.swift */,
 				B84F32D029528D1E00460B16 /* UIControl+Extension.swift */,
+				B84F32D62952DE1E00460B16 /* PHAsset+Extension.swift */,
 				B84E2C062951A69E000230DD /* Array+Extension.swift */,
 				B84F32D22952902400460B16 /* Date+Extension.swift */,
 			);
@@ -202,6 +207,7 @@
 			isa = PBXGroup;
 			children = (
 				B84E2C0E2951E4A8000230DD /* DataListCell.swift */,
+				B84F32D42952C59700460B16 /* ImageCell.swift */,
 				B84E2C102951EF52000230DD /* FormInputView.swift */,
 			);
 			path = "Reusable Views";
@@ -358,8 +364,10 @@
 				B84E2BF52951801F000230DD /* DataVM.swift in Sources */,
 				B84E2BE529517C98000230DD /* DataVC.swift in Sources */,
 				B84E2C0129519AAA000230DD /* DataArrayTransformer.swift in Sources */,
+				B84F32D52952C59700460B16 /* ImageCell.swift in Sources */,
 				B84E2BF729518206000230DD /* BaseVC.swift in Sources */,
 				B84F32CF29528C9C00460B16 /* UIControlSubscription.swift in Sources */,
+				B84F32D72952DE1E00460B16 /* PHAsset+Extension.swift in Sources */,
 				B84E2C0D2951DF2A000230DD /* AddDataVM.swift in Sources */,
 				B84E2C072951A69E000230DD /* Array+Extension.swift in Sources */,
 				B84E2BD6295175D7000230DD /* UIStackView+Extension.swift in Sources */,
@@ -515,6 +523,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ImageMachine/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "We need to access your camera for QR Code scanning purposes.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "We need to access your photo library for you to group your photos.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -547,6 +556,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ImageMachine/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "We need to access your camera for QR Code scanning purposes.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "We need to access your photo library for you to group your photos.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;

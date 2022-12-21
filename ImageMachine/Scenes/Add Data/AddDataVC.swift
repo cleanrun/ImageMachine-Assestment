@@ -10,6 +10,9 @@ import SwiftUI
 
 final class AddDataVC: BaseVC {
     
+    private typealias DataSource = UICollectionViewDiffableDataSource<Int, UIImage>
+    private typealias Snapshot = NSDiffableDataSourceSnapshot<Int, UIImage>
+    
     private var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.translatesAutoresizingMaskIntoConstraints = false
@@ -57,6 +60,17 @@ final class AddDataVC: BaseVC {
         return button
     }()
     
+    private var imagesCollectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.showsVerticalScrollIndicator = false
+        collectionView.showsHorizontalScrollIndicator = false
+        return collectionView
+    }()
+    
     private var saveButtonContainerView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -82,6 +96,7 @@ final class AddDataVC: BaseVC {
     }()
     
     private(set) var viewModel: AddDataVM!
+    private var dataSource: DataSource!
     
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -98,7 +113,7 @@ final class AddDataVC: BaseVC {
         title = "Add Data"
         navigationItem.largeTitleDisplayMode = .never
         
-        containerStackView.addArrangedSubviews(nameField, typeField, qrField, dateField, addImagesButton)
+        containerStackView.addArrangedSubviews(nameField, typeField, qrField, dateField, addImagesButton, imagesCollectionView)
         scrollView.addSubview(containerStackView)
         saveButtonContainerView.addSubview(saveButton)
         view.addSubviews(saveButtonContainerView, scrollView)
@@ -130,9 +145,18 @@ final class AddDataVC: BaseVC {
             dateField.heightAnchor.constraint(equalToConstant: FormInputView.PREFERRED_HEIGHT),
             qrField.heightAnchor.constraint(equalToConstant: FormInputView.PREFERRED_HEIGHT),
             addImagesButton.heightAnchor.constraint(equalToConstant: 50),
+            imagesCollectionView.heightAnchor.constraint(equalToConstant: ImageCell.PREFERRED_HEIGHT_AND_WIDTH)
         ])
         
         dateField.setTextFieldInputView(dateInputView)
+        
+        imagesCollectionView.delegate = self
+        imagesCollectionView.register(ImageCell.self, forCellWithReuseIdentifier: ImageCell.REUSABLE_IDENTIFIER)
+        dataSource = DataSource(collectionView: imagesCollectionView, cellProvider: { [unowned self] collectionView, indexPath, itemIdentifier in
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ImageCell.REUSABLE_IDENTIFIER, for: indexPath) as! ImageCell
+            cell.setImage(viewModel.images[indexPath.row])
+            return cell
+        })
     }
     
     override func setupBindings() {
@@ -163,13 +187,13 @@ final class AddDataVC: BaseVC {
         addImagesButton
             .publisher(for: .touchUpInside)
             .sink { [unowned self] value in
-                
+                self.viewModel.presentPhotoPicker()
             }.store(in: &disposables)
         
         saveButton
             .publisher(for: .touchUpInside)
             .sink { [unowned self] value in
-                //self.viewModel.saveMachine()
+                self.viewModel.saveMachine()
             }.store(in: &disposables)
         
         viewModel
@@ -187,7 +211,29 @@ final class AddDataVC: BaseVC {
         viewModel
             .validation
             .sink { [unowned self] value in
-                self.saveButton.isUserInteractionEnabled = value
+                self.saveButton.isHidden = !value
             }.store(in: &disposables)
+        
+        viewModel
+            .$images
+            .sink { [unowned self] value in
+                self.setupSnapshot()
+            }.store(in: &disposables)
+    }
+    
+    private func setupSnapshot() {
+        var snapshot = Snapshot()
+        snapshot.appendSections([0])
+        snapshot.appendItems(viewModel.images)
+        dataSource.apply(snapshot, animatingDifferences: true)
+    }
+    
+}
+
+extension AddDataVC: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+        CGSize(width: ImageCell.PREFERRED_HEIGHT_AND_WIDTH, height: ImageCell.PREFERRED_HEIGHT_AND_WIDTH)
     }
 }

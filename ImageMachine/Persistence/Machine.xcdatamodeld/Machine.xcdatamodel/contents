@@ -5,7 +5,7 @@
         <attribute name="machineId" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="maintenanceDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="name" optional="YES" attributeType="String"/>
-        <attribute name="qrNumber" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="qrNumber" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="type" optional="YES" attributeType="String"/>
     </entity>
 </model>

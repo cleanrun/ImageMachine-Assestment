@@ -18,7 +18,7 @@ extension MachineEntity {
     @NSManaged public var machineId: UUID?
     @NSManaged public var name: String?
     @NSManaged public var type: String?
-    @NSManaged public var qrNumber: Int32
+    @NSManaged public var qrNumber: Int64
     @NSManaged public var maintenanceDate: Date?
     @NSManaged public var images: [NSData]?
 

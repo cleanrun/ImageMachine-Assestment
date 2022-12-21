@@ -32,6 +32,11 @@ final class DataVC: BaseVC {
         viewModel = DataVM(vc: self)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        viewModel.getAllData()
+    }
+    
     override func setupUI() {
         super.setupUI()
         title = "Data"
@@ -81,18 +86,6 @@ final class DataVC: BaseVC {
     }
     
     @objc private func addAction() {
-        /*
-        let image = UIImage(named: "swiftlogo")!
-        let imageArray: Array<UIImage> = [image, image, image]
-        let transformedArray = imageArray.transformToData()
-        
-        let machine = MachineModel(name: "Another test",
-                                   type: "Test",
-                                   qrNumber: 123456789,
-                                   maintenanceDate: Date(),
-                                   images: transformedArray)
-        CoreDataManager.current.saveMachine(machine)
-        */
         viewModel.routeToAddData()
     }
     
@@ -103,7 +96,7 @@ final class DataVC: BaseVC {
 
 extension DataVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        80
+        DataListCell.PREFERRED_HEIGHT
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

@@ -23,14 +23,14 @@ final class DataArrayTransformer: NSSecureUnarchiveFromDataTransformer {
     
     override func transformedValue(_ value: Any?) -> Any? {
         guard let data = value as? Data else {
-            fatalError("Wrong data type: value must be a Data object; received \(type(of: value))")
+            fatalError("Incorrect data type. Should be Data, but instead we're getting \(type(of: value))")
         }
         return super.transformedValue(data)
     }
     
     override func reverseTransformedValue(_ value: Any?) -> Any? {
         guard let data = value as? [NSData] else {
-            fatalError("Wrong data type: value must be a NSData object; received \(type(of: value))")
+            fatalError("Incorrect data type. Should be NSData, but instead we're getting \(type(of: value))")
         }
         return super.reverseTransformedValue(data)
     }

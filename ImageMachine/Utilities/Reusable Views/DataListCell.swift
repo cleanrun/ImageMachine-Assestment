@@ -9,6 +9,7 @@ import UIKit
 
 final class DataListCell: UITableViewCell {
     static let REUSE_IDENTIFIER = String(describing: DataListCell.self)
+    static let PREFERRED_HEIGHT: CGFloat = 80
     
     private var nameTypeStackView: UIStackView = {
         let stackView = UIStackView()
