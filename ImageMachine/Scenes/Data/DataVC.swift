@@ -101,7 +101,7 @@ final class DataVC: BaseVC {
     }
     
     @objc private func sortAction() {
-        
+        viewModel.showSortAlert()
     }
 }
 

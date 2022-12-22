@@ -111,6 +111,11 @@ final class AddDataVC: BaseVC {
         super.init(coder: coder)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        viewModel.requestPhotoLibraryAuthorization()
+    }
+    
     override func setupUI() {
         super.setupUI()
         dismissKeyboardWhenViewIsTapped()

@@ -12,6 +12,7 @@ import PhotosUI
 final class AddDataVM: BaseVM {
     private weak var viewController: AddDataVC?
     private var photoPickerConfig: PHPickerConfiguration
+    private(set) var photoLibraryAuthorizationStatus: PHAuthorizationStatus!
     
     @Published var name: String = ""
     @Published var type: String = ""
@@ -36,6 +37,11 @@ final class AddDataVM: BaseVM {
     }
     
     func saveMachine() {
+        guard !dataManager.checkIfMachineExists(for: qrNumber) else {
+            showQrRegisteredAlert()
+            return
+        }
+        
         for image in images {
             do {
                 try image.imageData.storeToDisk(id: image.id)
@@ -51,15 +57,56 @@ final class AddDataVM: BaseVM {
         viewController?.navigationController?.popViewController(animated: true)
     }
     
+    func requestPhotoLibraryAuthorization() {
+        photoLibraryAuthorizationStatus = PHPhotoLibrary.authorizationStatus()
+        if photoLibraryAuthorizationStatus != .authorized {
+            PHPhotoLibrary.requestAuthorization { [unowned self] status in
+                self.photoLibraryAuthorizationStatus = status
+            }
+        }
+    }
+    
+    private func showCameraNotAuthorizedAlert() {
+        let alert = UIAlertController(title: "Missing photo library permission",
+                                      message: "To add a new Machine data, please grant the photo library permission for all photos for this app.",
+                                      preferredStyle: .alert)
+        let settingsAction = UIAlertAction(title: "Go To Settings",
+                                   style: .default) { [unowned self] _ in
+            UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
+            self.viewController?.tabBarController?.selectedIndex = 0
+        }
+        let cancelAction = UIAlertAction(title: "Cancel",
+                                   style: .cancel) { [unowned self] _ in
+            self.viewController?.tabBarController?.selectedIndex = 0
+        }
+        alert.addAction(settingsAction)
+        alert.addAction(cancelAction)
+        viewController?.present(alert, animated: true)
+    }
+    
+    private func showQrRegisteredAlert() {
+        let alert = UIAlertController(title: "QR code is already registered",
+                                      message: "This QR code is already registered, please change to other QR code.",
+                                      preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK",
+                                   style: .cancel)
+        alert.addAction(okAction)
+        viewController?.present(alert, animated: true)
+    }
+    
     func presentQrReader() {
         let vc = ReaderVC(type: .input)
         viewController?.present(vc, animated: true)
     }
     
     func presentPhotoPicker() {
-        let vc = PHPickerViewController(configuration: photoPickerConfig)
-        vc.delegate = self
-        viewController?.present(vc, animated: true)
+        if photoLibraryAuthorizationStatus == .authorized {
+            let vc = PHPickerViewController(configuration: photoPickerConfig)
+            vc.delegate = self
+            viewController?.present(vc, animated: true)
+        } else {
+            showCameraNotAuthorizedAlert()
+        }
     }
 }
 

@@ -65,6 +65,10 @@ final class CoreDataManager {
         return result
     }
     
+    func checkIfMachineExists(for qrNumber: Int) -> Bool {
+        findMachine(byQrNumber: qrNumber) != nil
+    }
+    
     func editMachine(_ model: MachineModel) {
         if let entity = findMachine(byId: model.machineId) {
             entity.setValue(model.name, forKey: #keyPath(MachineEntity.name))
