@@ -20,7 +20,7 @@ extension MachineEntity {
     @NSManaged public var type: String?
     @NSManaged public var qrNumber: Int64
     @NSManaged public var maintenanceDate: Date?
-    @NSManaged public var images: [NSData]?
+    @NSManaged public var imageFileNames: [NSString]?
 
 }
 

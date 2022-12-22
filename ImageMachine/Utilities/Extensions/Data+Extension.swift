@@ -23,4 +23,9 @@ extension Data {
         guard let downsampledImage = CGImageSourceCreateThumbnailAtIndex(imageSource, 0, downsampleOptions) else { return nil }
         return UIImage(cgImage: downsampledImage)
     }
+    
+    func storeToDisk(id: String) throws {
+        let url = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent(id)
+        try self.write(to: url)
+    }
 }

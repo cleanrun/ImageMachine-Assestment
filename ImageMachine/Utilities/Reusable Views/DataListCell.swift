@@ -67,6 +67,6 @@ final class DataListCell: UITableViewCell {
     func setupContents(_ machine: MachineModel) {
         nameLabel.text = machine.name
         typeLabel.text = machine.type
-        imageCountLabel.text = "\(machine.images.count) Images"
+        imageCountLabel.text = "\(machine.imageFileNames.count) Images"
     }
 }

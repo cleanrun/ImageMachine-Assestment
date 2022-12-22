@@ -158,10 +158,7 @@ final class AddDataVC: BaseVC {
         imagesCollectionView.register(ImageCell.self, forCellWithReuseIdentifier: ImageCell.REUSABLE_IDENTIFIER)
         dataSource = DataSource(collectionView: imagesCollectionView, cellProvider: { [unowned self] collectionView, indexPath, itemIdentifier in
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ImageCell.REUSABLE_IDENTIFIER, for: indexPath) as! ImageCell
-//            if let notDownsampled = UIImage(data: viewModel.images[indexPath.row]) {
-//                cell.setImage(notDownsampled)
-//            }
-            if let image = viewModel.images[indexPath.row].createDownsampledImage(to: CGSize(width: 100, height: 100)) {
+            if let image = viewModel.images[indexPath.row].imageData.createDownsampledImage(to: CGSize(width: 100, height: 100)) {
                 cell.setImage(image)
             }
             return cell
@@ -231,9 +228,10 @@ final class AddDataVC: BaseVC {
     }
     
     private func setupSnapshot() {
+        let imageDatas = viewModel.images.compactMap { $0.imageData }
         var snapshot = Snapshot()
         snapshot.appendSections([0])
-        snapshot.appendItems(viewModel.images)
+        snapshot.appendItems(imageDatas)
         dataSource.apply(snapshot, animatingDifferences: true)
     }
     

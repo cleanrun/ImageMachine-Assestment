@@ -14,15 +14,15 @@ struct MachineModel: Hashable {
     let type: String
     let qrNumber: Int
     let maintenanceDate: Date
-    let images: [Data]
+    let imageFileNames: [String]
     
-    init(machineId: UUID = UUID(), name: String, type: String, qrNumber: Int, maintenanceDate: Date, images: [Data]) {
+    init(machineId: UUID = UUID(), name: String, type: String, qrNumber: Int, maintenanceDate: Date, imageFileNames: [String]) {
         self.machineId = machineId
         self.name = name
         self.type = type
         self.qrNumber = qrNumber
         self.maintenanceDate = maintenanceDate
-        self.images = images
+        self.imageFileNames = imageFileNames
     }
     
     init(from entity: MachineEntity) {
@@ -31,8 +31,8 @@ struct MachineModel: Hashable {
         self.type = entity.type!
         self.qrNumber = Int(entity.qrNumber)
         self.maintenanceDate = entity.maintenanceDate!
-        self.images = (entity.images?.compactMap {
-            Data($0)
+        self.imageFileNames = (entity.imageFileNames?.compactMap {
+            $0 as String
         })!
     }
 }
@@ -40,8 +40,8 @@ struct MachineModel: Hashable {
 extension MachineModel {
     
     func asEntity(with context: NSManagedObjectContext) -> MachineEntity {
-        let transformedImages = images.compactMap {
-            NSData(data: $0)
+        let transformedImages = imageFileNames.compactMap {
+            NSString(string: $0)
         }
         
         let entity = MachineEntity(context: context)
@@ -50,7 +50,7 @@ extension MachineModel {
         entity.setValue(type, forKey: #keyPath(MachineEntity.type))
         entity.setValue(Int64(qrNumber), forKey: #keyPath(MachineEntity.qrNumber))
         entity.setValue(maintenanceDate, forKey: #keyPath(MachineEntity.maintenanceDate))
-        entity.setValue(transformedImages, forKey: #keyPath(MachineEntity.images))
+        entity.setValue(transformedImages, forKey: #keyPath(MachineEntity.imageFileNames))
         return entity
     }
 }

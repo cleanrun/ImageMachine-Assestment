@@ -27,6 +27,9 @@ final class CoreDataManager {
     
     func deleteMachine(_ id: UUID) {
         if let entity = findMachine(byId: id) {
+            for imageFileName in entity.imageFileNames! {
+                deleteStoredImage(for: imageFileName as String)
+            }
             managedContext.delete(entity)
             stack.saveContext()
         }
@@ -87,5 +90,15 @@ final class CoreDataManager {
         }
         
         return requestResult
+    }
+    
+    private func deleteStoredImage(for id: String) {
+        let fileManager = FileManager.default
+        let url = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent(id)
+        do {
+            try fileManager.removeItem(at: url)
+        } catch {
+            print(error.localizedDescription)
+        }
     }
 }

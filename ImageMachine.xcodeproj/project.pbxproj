@@ -37,6 +37,8 @@
 		B84F32D32952902400460B16 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84F32D22952902400460B16 /* Date+Extension.swift */; };
 		B84F32D52952C59700460B16 /* ImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84F32D42952C59700460B16 /* ImageCell.swift */; };
 		B84F32D72952DE1E00460B16 /* PHAsset+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84F32D62952DE1E00460B16 /* PHAsset+Extension.swift */; };
+		B853000529549D91003B2295 /* ImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B853000429549D91003B2295 /* ImageModel.swift */; };
+		B85300072954A510003B2295 /* URL+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85300062954A510003B2295 /* URL+Extension.swift */; };
 		B88C186C2953664A002871A1 /* DataTableViewDiffableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88C186B2953664A002871A1 /* DataTableViewDiffableDataSource.swift */; };
 		B8D245FC2954181800E67AC6 /* DataDetailVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D245FB2954181800E67AC6 /* DataDetailVM.swift */; };
 		B8D245FE2954408800E67AC6 /* ImagePreviewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D245FD2954408800E67AC6 /* ImagePreviewVC.swift */; };
@@ -79,6 +81,8 @@
 		B84F32D22952902400460B16 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		B84F32D42952C59700460B16 /* ImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCell.swift; sourceTree = "<group>"; };
 		B84F32D62952DE1E00460B16 /* PHAsset+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PHAsset+Extension.swift"; sourceTree = "<group>"; };
+		B853000429549D91003B2295 /* ImageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageModel.swift; sourceTree = "<group>"; };
+		B85300062954A510003B2295 /* URL+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Extension.swift"; sourceTree = "<group>"; };
 		B88C186B2953664A002871A1 /* DataTableViewDiffableDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTableViewDiffableDataSource.swift; sourceTree = "<group>"; };
 		B8D245FB2954181800E67AC6 /* DataDetailVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataDetailVM.swift; sourceTree = "<group>"; };
 		B8D245FD2954408800E67AC6 /* ImagePreviewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePreviewVC.swift; sourceTree = "<group>"; };
@@ -130,6 +134,7 @@
 			children = (
 				B84E2C082951B90C000230DD /* Core Data Entities */,
 				B84E2BFE295195AA000230DD /* MachineModel.swift */,
+				B853000429549D91003B2295 /* ImageModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -168,6 +173,7 @@
 				B84F32D62952DE1E00460B16 /* PHAsset+Extension.swift */,
 				B84E2C062951A69E000230DD /* Array+Extension.swift */,
 				B84F32D22952902400460B16 /* Date+Extension.swift */,
+				B85300062954A510003B2295 /* URL+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -380,6 +386,7 @@
 				B8E1E3332950A78900EE6BD1 /* AppDelegate.swift in Sources */,
 				B84F32D32952902400460B16 /* Date+Extension.swift in Sources */,
 				B84E2C0B2951DF19000230DD /* AddDataVC.swift in Sources */,
+				B85300072954A510003B2295 /* URL+Extension.swift in Sources */,
 				B84F32D129528D1E00460B16 /* UIControl+Extension.swift in Sources */,
 				B84E2BE729517CA4000230DD /* ReaderVC.swift in Sources */,
 				B84E2C142951F1CF000230DD /* ViewControllerPreviewProvider.swift in Sources */,
@@ -408,6 +415,7 @@
 				B84E2C182951FDB5000230DD /* UITextField+Extension.swift in Sources */,
 				B88C186C2953664A002871A1 /* DataTableViewDiffableDataSource.swift in Sources */,
 				B84E2BFA2951827F000230DD /* BaseVM.swift in Sources */,
+				B853000529549D91003B2295 /* ImageModel.swift in Sources */,
 				B84E2C052951A0B9000230DD /* MachineEntity+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

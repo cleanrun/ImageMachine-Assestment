@@ -15,9 +15,9 @@ final class AddDataVM: BaseVM {
     
     @Published var name: String = ""
     @Published var type: String = ""
-    @Published var qrNumber: Int = 223344
+    @Published var qrNumber: Int = 0
     @Published var maintenanceDate: Date = Date()
-    @Published var images: [Data] = []
+    @Published var images: [ImageModel] = []
     
     lazy var validation: AnyPublisher<Bool, Never> = {
         Publishers
@@ -36,7 +36,17 @@ final class AddDataVM: BaseVM {
     }
     
     func saveMachine() {
-        let machine = MachineModel(name: name, type: type, qrNumber: qrNumber, maintenanceDate: maintenanceDate, images: images)
+        for image in images {
+            do {
+                try image.imageData.storeToDisk(id: image.id)
+            } catch {
+                print(error.localizedDescription)
+                return
+            }
+        }
+        
+        let imageFileNames = images.compactMap { $0.id }
+        let machine = MachineModel(name: name, type: type, qrNumber: qrNumber, maintenanceDate: maintenanceDate, imageFileNames: imageFileNames)
         dataManager.saveMachine(machine)
         viewController?.navigationController?.popViewController(animated: true)
     }
@@ -60,7 +70,8 @@ extension AddDataVM: PHPickerViewControllerDelegate {
             let imageItems = results.compactMap { $0.assetIdentifier }
             let fetchResult = PHAsset.fetchAssets(withLocalIdentifiers: imageItems, options: nil)
             fetchResult.enumerateObjects { object, index, stop in
-                self.images.append(object.uiImage.jpegData(compressionQuality: 0.5)!)
+                let imageModel = ImageModel(id: "image_\(UUID().uuidString)", imageData: object.uiImage.jpegData(compressionQuality: 0.5)!)
+                self.images.append(imageModel)
             }
         }
     }
