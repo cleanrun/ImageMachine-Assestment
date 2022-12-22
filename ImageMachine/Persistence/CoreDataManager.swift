@@ -25,6 +25,52 @@ final class CoreDataManager {
         stack.saveContext()
     }
     
+    func deleteMachine(_ id: UUID) {
+        if let entity = findMachine(byId: id) {
+            managedContext.delete(entity)
+            stack.saveContext()
+        }
+    }
+    
+    func findMachine(byId machineId: UUID) -> MachineEntity? {
+        let fetchRequest: NSFetchRequest<MachineEntity> = MachineEntity.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "machineId == %@", machineId as NSUUID)
+        
+        var result: MachineEntity? = nil
+        
+        do {
+            result = try managedContext.fetch(fetchRequest).first
+        } catch {
+            print(error.localizedDescription)
+        }
+        
+        return result
+    }
+    
+    func findMachine(byQrNumber qrNumber: Int) -> MachineEntity? {
+        let fetchRequest: NSFetchRequest<MachineEntity> = MachineEntity.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "qrNumber == %d", Int64(qrNumber))
+        
+        var result: MachineEntity? = nil
+        
+        do {
+            result = try managedContext.fetch(fetchRequest).first
+        } catch {
+            print(error.localizedDescription)
+        }
+        
+        return result
+    }
+    
+    func editMachine(_ model: MachineModel) {
+        if let entity = findMachine(byId: model.machineId) {
+            entity.setValue(model.name, forKey: #keyPath(MachineEntity.name))
+            entity.setValue(model.type, forKey: #keyPath(MachineEntity.type))
+            entity.setValue(model.maintenanceDate, forKey: #keyPath(MachineEntity.maintenanceDate))
+            stack.saveContext()
+        }
+    }
+    
     func getAllMachines() -> [MachineModel] {
         let fetchRequest: NSFetchRequest<MachineEntity> = MachineEntity.fetchRequest()
         var requestResult = [MachineModel]()

@@ -37,6 +37,8 @@
 		B84F32D32952902400460B16 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84F32D22952902400460B16 /* Date+Extension.swift */; };
 		B84F32D52952C59700460B16 /* ImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84F32D42952C59700460B16 /* ImageCell.swift */; };
 		B84F32D72952DE1E00460B16 /* PHAsset+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84F32D62952DE1E00460B16 /* PHAsset+Extension.swift */; };
+		B88C186C2953664A002871A1 /* DataTableViewDiffableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88C186B2953664A002871A1 /* DataTableViewDiffableDataSource.swift */; };
+		B8D245FC2954181800E67AC6 /* DataDetailVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D245FB2954181800E67AC6 /* DataDetailVM.swift */; };
 		B8E1E3332950A78900EE6BD1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E1E3322950A78900EE6BD1 /* AppDelegate.swift */; };
 		B8E1E3352950A78900EE6BD1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E1E3342950A78900EE6BD1 /* SceneDelegate.swift */; };
 		B8E1E33C2950A78A00EE6BD1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B8E1E33B2950A78A00EE6BD1 /* Assets.xcassets */; };
@@ -74,6 +76,8 @@
 		B84F32D22952902400460B16 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		B84F32D42952C59700460B16 /* ImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCell.swift; sourceTree = "<group>"; };
 		B84F32D62952DE1E00460B16 /* PHAsset+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PHAsset+Extension.swift"; sourceTree = "<group>"; };
+		B88C186B2953664A002871A1 /* DataTableViewDiffableDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTableViewDiffableDataSource.swift; sourceTree = "<group>"; };
+		B8D245FB2954181800E67AC6 /* DataDetailVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataDetailVM.swift; sourceTree = "<group>"; };
 		B8E1E32F2950A78900EE6BD1 /* ImageMachine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImageMachine.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8E1E3322950A78900EE6BD1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B8E1E3342950A78900EE6BD1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -190,6 +194,7 @@
 			isa = PBXGroup;
 			children = (
 				B84E2BEC29517D1E000230DD /* DataDetailVC.swift */,
+				B8D245FB2954181800E67AC6 /* DataDetailVM.swift */,
 			);
 			path = "Data Detail";
 			sourceTree = "<group>";
@@ -199,6 +204,7 @@
 			children = (
 				B84E2BF629518206000230DD /* BaseVC.swift */,
 				B84E2BF92951827F000230DD /* BaseVM.swift */,
+				B88C186B2953664A002871A1 /* DataTableViewDiffableDataSource.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -350,6 +356,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B84E2BDB295178F4000230DD /* CoreDataStack.swift in Sources */,
+				B8D245FC2954181800E67AC6 /* DataDetailVM.swift in Sources */,
 				B84E2BD929517798000230DD /* Machine.xcdatamodeld in Sources */,
 				B84E2BED29517D1E000230DD /* DataDetailVC.swift in Sources */,
 				B84E2BFF295195AA000230DD /* MachineModel.swift in Sources */,
@@ -379,6 +386,7 @@
 				B84E2BE029517C5D000230DD /* MainTabVC.swift in Sources */,
 				B84E2BFC29518728000230DD /* ReaderVM.swift in Sources */,
 				B84E2C182951FDB5000230DD /* UITextField+Extension.swift in Sources */,
+				B88C186C2953664A002871A1 /* DataTableViewDiffableDataSource.swift in Sources */,
 				B84E2BFA2951827F000230DD /* BaseVM.swift in Sources */,
 				B84E2C052951A0B9000230DD /* MachineEntity+CoreDataProperties.swift in Sources */,
 			);

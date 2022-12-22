@@ -9,7 +9,7 @@ import UIKit
 
 final class DataVC: BaseVC {
     
-    private typealias DataSource = UITableViewDiffableDataSource<Int, MachineModel>
+    private typealias DataSource = DataTableViewDiffableDataSource
     private typealias Snapshot = NSDiffableDataSourceSnapshot<Int, MachineModel>
     
     private var dataTableView: UITableView! = {
@@ -68,6 +68,14 @@ final class DataVC: BaseVC {
             cell.setupContents(model)
             return cell
         })
+        dataSource.deleteHandler = { [unowned self] source, model in
+            self.viewModel.showDeleteConfirmationAlert {
+                self.viewModel.deleteData(model.machineId)
+                var currentSnapshot = source.snapshot()
+                currentSnapshot.deleteItems([model])
+                source.apply(currentSnapshot)
+            }
+        }
     }
     
     override func setupBindings() {
@@ -100,6 +108,7 @@ extension DataVC: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        viewModel.routeToDetailData(viewModel.machines[indexPath.row])
         tableView.deselectRow(at: indexPath, animated: true)
     }
 }

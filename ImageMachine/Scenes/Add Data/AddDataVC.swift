@@ -98,9 +98,13 @@ final class AddDataVC: BaseVC {
     private(set) var viewModel: AddDataVM!
     private var dataSource: DataSource!
     
-    init() {
+    init(usingQr qrNumber: Int? = nil) {
         super.init(nibName: nil, bundle: nil)
         viewModel = AddDataVM(vc: self)
+        
+        if qrNumber != nil {
+            viewModel.qrNumber = qrNumber!
+        }
     }
     
     required init?(coder: NSCoder) {
@@ -110,6 +114,7 @@ final class AddDataVC: BaseVC {
     
     override func setupUI() {
         super.setupUI()
+        dismissKeyboardWhenViewIsTapped()
         title = "Add Data"
         navigationItem.largeTitleDisplayMode = .never
         

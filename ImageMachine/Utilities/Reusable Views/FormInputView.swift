@@ -115,6 +115,14 @@ final class FormInputView: UIView {
         inputTextField.inputView = view
     }
     
+    func setDefaultTextFieldText(_ value: String) {
+        guard type == .field else {
+            fatalError("FormInputView's type must be .field to execute this function ")
+        }
+        
+        inputTextField.text = value
+    }
+    
     func setDateText(_ date: Date) {
         guard type == .field, inputTextField.inputView is UIDatePicker else {
             fatalError("FormInputView's type must be .field and the TextField's inputView must be a UIDatePicker to execute this function ")
@@ -130,7 +138,22 @@ final class FormInputView: UIView {
         
         inputButton.setTitle(title, for: .normal)
     }
-
+    
+    func isButtonEnabled(_ enabled: Bool) {
+        guard type == .button else {
+            fatalError("FormInputView's type must be .button to execute this function ")
+        }
+        
+        inputButton.isUserInteractionEnabled = enabled
+    }
+    
+    func isFieldEnabled(_ enabled: Bool) {
+        guard type == .field else {
+            fatalError("FormInputView's type must be .field to execute this function ")
+        }
+        
+        inputTextField.isUserInteractionEnabled = enabled
+    }
 }
 
 extension FormInputView: UITextFieldDelegate {

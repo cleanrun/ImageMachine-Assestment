@@ -32,12 +32,15 @@ class BaseVC: UIViewController {
     
     func setupUI() {
         view.backgroundColor = .systemBackground
-        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard)))
     }
     
     func setupBindings() {}
     
-    @objc private func dismissKeyboard() {
+    func dismissKeyboardWhenViewIsTapped() {
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissKeyboardHandler)))
+    }
+    
+    @objc private func dismissKeyboardHandler() {
         view.endEditing(true)
     }
     

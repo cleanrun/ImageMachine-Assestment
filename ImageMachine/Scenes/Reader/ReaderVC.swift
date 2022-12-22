@@ -12,8 +12,8 @@ final class ReaderVC: BaseVC {
     private var cameraView: UIView!
     private var infoLabel: UILabel!
     
-    private var captureSession: AVCaptureSession!
-    private var previewLayer: AVCaptureVideoPreviewLayer!
+    private(set) var captureSession: AVCaptureSession!
+    private(set) var previewLayer: AVCaptureVideoPreviewLayer!
 
     private var viewModel: ReaderVM!
     
@@ -127,18 +127,6 @@ final class ReaderVC: BaseVC {
     func showQRResultAlert(result: Int) {
         let alert = UIAlertController(title: "QR Code Result",
                                       message: "This QR contains a data: \(result)",
-                                      preferredStyle: .alert)
-        let action = UIAlertAction(title: "OK",
-                                   style: .cancel) { [unowned self] _ in
-            self.captureSession.startRunning()
-        }
-        alert.addAction(action)
-        present(alert, animated: true)
-    }
-    
-    func showQRResultErrorAlert() {
-        let alert = UIAlertController(title: "QR Code Result Error",
-                                      message: "QR Code must only contain numbers",
                                       preferredStyle: .alert)
         let action = UIAlertAction(title: "OK",
                                    style: .cancel) { [unowned self] _ in
