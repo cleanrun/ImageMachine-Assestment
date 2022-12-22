@@ -94,7 +94,11 @@ final class DataVC: BaseVC {
     }
     
     @objc private func addAction() {
-        viewModel.routeToAddData()
+        if checkIfCameraIsAuthorized() {
+            viewModel.routeToAddData()
+        } else {
+            viewModel.showCameraNotAuthorizedAlert()
+        }
     }
     
     @objc private func sortAction() {

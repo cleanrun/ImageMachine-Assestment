@@ -7,6 +7,7 @@
 
 import UIKit
 import Combine
+import AVFoundation
 
 class BaseVC: UIViewController {
     
@@ -42,6 +43,10 @@ class BaseVC: UIViewController {
     
     @objc private func dismissKeyboardHandler() {
         view.endEditing(true)
+    }
+    
+    func checkIfCameraIsAuthorized() -> Bool {
+        return AVCaptureDevice.authorizationStatus(for: .video) == .authorized
     }
     
 }

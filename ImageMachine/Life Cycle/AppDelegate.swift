@@ -6,12 +6,14 @@
 //
 
 import UIKit
+import AVFoundation
 
 @main final class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         DataArrayTransformer.register()
+        requestCameraPermission()
         return true
     }
     
@@ -21,5 +23,10 @@ import UIKit
         return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
     }
     
+    private func requestCameraPermission() {
+        AVCaptureDevice.requestAccess(for: .video, completionHandler: { granted in
+            
+        })
+    }
 }
 

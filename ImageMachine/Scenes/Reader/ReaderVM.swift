@@ -43,6 +43,24 @@ final class ReaderVM: BaseVM {
         }
     }
     
+    func showCameraNotAuthorizedAlert() {
+        let alert = UIAlertController(title: "Missing camera permission",
+                                      message: "To use this QR code reader, please grant the camera permission for this app.",
+                                      preferredStyle: .alert)
+        let settingsAction = UIAlertAction(title: "Go To Settings",
+                                   style: .default) { [unowned self] _ in
+            UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
+            self.viewController?.tabBarController?.selectedIndex = 0
+        }
+        let cancelAction = UIAlertAction(title: "Cancel",
+                                   style: .cancel) { [unowned self] _ in
+            self.viewController?.tabBarController?.selectedIndex = 0
+        }
+        alert.addAction(settingsAction)
+        alert.addAction(cancelAction)
+        viewController?.present(alert, animated: true)
+    }
+    
     func showQRResultErrorAlert() {
         let alert = UIAlertController(title: "QR Code Result Error",
                                       message: "QR Code must only contain numbers",

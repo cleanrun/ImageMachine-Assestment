@@ -29,9 +29,13 @@ final class ReaderVC: BaseVC {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        animateInfoLabel(true)
-        if !captureSession.isRunning {
-            captureSession.startRunning()
+        if checkIfCameraIsAuthorized() {
+            animateInfoLabel(true)
+            if !captureSession.isRunning {
+                captureSession.startRunning()
+            }
+        } else {
+            viewModel.showCameraNotAuthorizedAlert()
         }
     }
     
@@ -45,7 +49,9 @@ final class ReaderVC: BaseVC {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        previewLayer.frame = cameraView.bounds
+        if checkIfCameraIsAuthorized() {
+            previewLayer.frame = cameraView.bounds
+        }
     }
     
     override func setupUI() {
@@ -120,20 +126,6 @@ final class ReaderVC: BaseVC {
             self.previewLayer.frame = self.cameraView.bounds
             self.cameraView.layer.addSublayer(self.previewLayer)
         }
-        
-        captureSession.startRunning()
-    }
-    
-    func showQRResultAlert(result: Int) {
-        let alert = UIAlertController(title: "QR Code Result",
-                                      message: "This QR contains a data: \(result)",
-                                      preferredStyle: .alert)
-        let action = UIAlertAction(title: "OK",
-                                   style: .cancel) { [unowned self] _ in
-            self.captureSession.startRunning()
-        }
-        alert.addAction(action)
-        present(alert, animated: true)
     }
     
     private func animateInfoLabel(_ animating: Bool) {
@@ -145,6 +137,7 @@ final class ReaderVC: BaseVC {
                 self.infoLabel.alpha = 0
             })
         } else {
+            infoLabel.alpha = 1
             infoLabel.layer.removeAllAnimations()
         }
     }
