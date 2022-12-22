@@ -91,8 +91,8 @@ final class DataVM: BaseVM {
     }
     
     func showSortAlert() {
-        let alert = UIAlertController(title: "Title",
-                                      message: "Message",
+        let alert = UIAlertController(title: nil,
+                                      message: "Select sort method",
                                       preferredStyle: .actionSheet)
         let nameAscAction = UIAlertAction(title: "Name (Ascending)", style: .default) { [unowned self] _ in
             self.sortType = .nameAscending

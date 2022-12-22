@@ -100,7 +100,6 @@ final class DataDetailVC: BaseVC {
     
     override func setupUI() {
         super.setupUI()
-        //dismissKeyboardWhenViewIsTapped()
         title = "Machine Detail"
         navigationItem.largeTitleDisplayMode = .never
         
@@ -177,8 +176,10 @@ final class DataDetailVC: BaseVC {
             .publisher(for: .touchUpInside)
             .sink { [unowned self] _ in
                 if self.viewModel.formType == .detail {
+                    self.dismissKeyboardWhenViewIsTapped()
                     self.viewModel.formType = .edit
                 } else {
+                    self.removeKeyboardDismissHandler()
                     self.viewModel.saveEdittedData()
                     self.viewModel.formType = .detail
                 }

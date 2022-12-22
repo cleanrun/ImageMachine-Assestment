@@ -41,6 +41,16 @@ class BaseVC: UIViewController {
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissKeyboardHandler)))
     }
     
+    func removeKeyboardDismissHandler() {
+        if let gestureRecognizers = view.gestureRecognizers {
+            for gestureRecognizer in gestureRecognizers {
+                if gestureRecognizer is UITapGestureRecognizer {
+                    view.removeGestureRecognizer(gestureRecognizer)
+                }
+            }
+        }
+    }
+    
     @objc private func dismissKeyboardHandler() {
         view.endEditing(true)
     }
