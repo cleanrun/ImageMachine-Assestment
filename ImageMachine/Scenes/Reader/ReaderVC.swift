@@ -24,7 +24,6 @@ final class ReaderVC: BaseVC {
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        viewModel = ReaderVM(vc: self, type: .detect)
     }
     
     override func viewWillAppear(_ animated: Bool) {

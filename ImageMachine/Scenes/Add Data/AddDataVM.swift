@@ -15,9 +15,9 @@ final class AddDataVM: BaseVM {
     
     @Published var name: String = ""
     @Published var type: String = ""
-    @Published var qrNumber: Int = 0
+    @Published var qrNumber: Int = 223344
     @Published var maintenanceDate: Date = Date()
-    @Published var images: [UIImage] = []
+    @Published var images: [Data] = []
     
     lazy var validation: AnyPublisher<Bool, Never> = {
         Publishers
@@ -36,8 +36,7 @@ final class AddDataVM: BaseVM {
     }
     
     func saveMachine() {
-        let transformedArray = images.transformToData()
-        let machine = MachineModel(name: name, type: type, qrNumber: qrNumber, maintenanceDate: maintenanceDate, images: transformedArray)
+        let machine = MachineModel(name: name, type: type, qrNumber: qrNumber, maintenanceDate: maintenanceDate, images: images)
         dataManager.saveMachine(machine)
         viewController?.navigationController?.popViewController(animated: true)
     }
@@ -61,7 +60,7 @@ extension AddDataVM: PHPickerViewControllerDelegate {
             let imageItems = results.compactMap { $0.assetIdentifier }
             let fetchResult = PHAsset.fetchAssets(withLocalIdentifiers: imageItems, options: nil)
             fetchResult.enumerateObjects { object, index, stop in
-                self.images.append(object.uiImage)
+                self.images.append(object.uiImage.jpegData(compressionQuality: 0.5)!)
             }
         }
     }

@@ -9,8 +9,8 @@ import UIKit
 
 final class DataDetailVC: BaseVC {
     
-    private typealias DataSource = UICollectionViewDiffableDataSource<Int, UIImage>
-    private typealias Snapshot = NSDiffableDataSourceSnapshot<Int, UIImage>
+    private typealias DataSource = UICollectionViewDiffableDataSource<Int, Data>
+    private typealias Snapshot = NSDiffableDataSourceSnapshot<Int, Data>
     
     private var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
@@ -96,14 +96,12 @@ final class DataDetailVC: BaseVC {
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        let mockModel = MachineModel(name: "", type: "", qrNumber: 0, maintenanceDate: Date(), images: [])
-        viewModel = DataDetailVM(vc: self, model: mockModel)
     }
     
     override func setupUI() {
         super.setupUI()
-        dismissKeyboardWhenViewIsTapped()
-        title = "Data Detail"
+        //dismissKeyboardWhenViewIsTapped()
+        title = "Machine Detail"
         navigationItem.largeTitleDisplayMode = .never
         
         containerStackView.addArrangedSubviews(nameField, typeField, qrField, dateField, imagesCollectionView)
@@ -149,7 +147,9 @@ final class DataDetailVC: BaseVC {
         imagesCollectionView.register(ImageCell.self, forCellWithReuseIdentifier: ImageCell.REUSABLE_IDENTIFIER)
         dataSource = DataSource(collectionView: imagesCollectionView, cellProvider: { [unowned self] collectionView, indexPath, itemIdentifier in
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ImageCell.REUSABLE_IDENTIFIER, for: indexPath) as! ImageCell
-            cell.setImage(viewModel.images[indexPath.row])
+            if let image = viewModel.images[indexPath.row].createDownsampledImage(to: CGSize(width: 100, height: 100)) {
+                cell.setImage(image)
+            }
             return cell
         })
     }
@@ -228,5 +228,10 @@ extension DataDetailVC: UICollectionViewDelegate, UICollectionViewDelegateFlowLa
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         CGSize(width: ImageCell.PREFERRED_HEIGHT_AND_WIDTH, height: ImageCell.PREFERRED_HEIGHT_AND_WIDTH)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.deselectItem(at: indexPath, animated: true)
+        viewModel.showImagePreviewModal(forImageAt: indexPath.row)
     }
 }

@@ -39,6 +39,9 @@
 		B84F32D72952DE1E00460B16 /* PHAsset+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84F32D62952DE1E00460B16 /* PHAsset+Extension.swift */; };
 		B88C186C2953664A002871A1 /* DataTableViewDiffableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88C186B2953664A002871A1 /* DataTableViewDiffableDataSource.swift */; };
 		B8D245FC2954181800E67AC6 /* DataDetailVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D245FB2954181800E67AC6 /* DataDetailVM.swift */; };
+		B8D245FE2954408800E67AC6 /* ImagePreviewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D245FD2954408800E67AC6 /* ImagePreviewVC.swift */; };
+		B8D246012954415600E67AC6 /* ImagePreviewVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D246002954415600E67AC6 /* ImagePreviewVM.swift */; };
+		B8D2460329544D1900E67AC6 /* Data+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D2460229544D1900E67AC6 /* Data+Extension.swift */; };
 		B8E1E3332950A78900EE6BD1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E1E3322950A78900EE6BD1 /* AppDelegate.swift */; };
 		B8E1E3352950A78900EE6BD1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E1E3342950A78900EE6BD1 /* SceneDelegate.swift */; };
 		B8E1E33C2950A78A00EE6BD1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B8E1E33B2950A78A00EE6BD1 /* Assets.xcassets */; };
@@ -78,6 +81,9 @@
 		B84F32D62952DE1E00460B16 /* PHAsset+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PHAsset+Extension.swift"; sourceTree = "<group>"; };
 		B88C186B2953664A002871A1 /* DataTableViewDiffableDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTableViewDiffableDataSource.swift; sourceTree = "<group>"; };
 		B8D245FB2954181800E67AC6 /* DataDetailVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataDetailVM.swift; sourceTree = "<group>"; };
+		B8D245FD2954408800E67AC6 /* ImagePreviewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePreviewVC.swift; sourceTree = "<group>"; };
+		B8D246002954415600E67AC6 /* ImagePreviewVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePreviewVM.swift; sourceTree = "<group>"; };
+		B8D2460229544D1900E67AC6 /* Data+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Extension.swift"; sourceTree = "<group>"; };
 		B8E1E32F2950A78900EE6BD1 /* ImageMachine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImageMachine.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8E1E3322950A78900EE6BD1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B8E1E3342950A78900EE6BD1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -109,6 +115,7 @@
 		B84E2BCD2951728A000230DD /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				B8D245FF2954408C00E67AC6 /* Image Preview */,
 				B84E2BDE29517C08000230DD /* Main Tab */,
 				B84E2BE329517C83000230DD /* Reader */,
 				B84E2BE229517C79000230DD /* Data */,
@@ -157,6 +164,7 @@
 				B84E2BD5295175D7000230DD /* UIStackView+Extension.swift */,
 				B84E2C172951FDB5000230DD /* UITextField+Extension.swift */,
 				B84F32D029528D1E00460B16 /* UIControl+Extension.swift */,
+				B8D2460229544D1900E67AC6 /* Data+Extension.swift */,
 				B84F32D62952DE1E00460B16 /* PHAsset+Extension.swift */,
 				B84E2C062951A69E000230DD /* Array+Extension.swift */,
 				B84F32D22952902400460B16 /* Date+Extension.swift */,
@@ -252,6 +260,15 @@
 				B84F32CE29528C9C00460B16 /* UIControlSubscription.swift */,
 			);
 			path = Combine;
+			sourceTree = "<group>";
+		};
+		B8D245FF2954408C00E67AC6 /* Image Preview */ = {
+			isa = PBXGroup;
+			children = (
+				B8D245FD2954408800E67AC6 /* ImagePreviewVC.swift */,
+				B8D246002954415600E67AC6 /* ImagePreviewVM.swift */,
+			);
+			path = "Image Preview";
 			sourceTree = "<group>";
 		};
 		B8E1E3262950A78900EE6BD1 = {
@@ -376,6 +393,7 @@
 				B84F32CF29528C9C00460B16 /* UIControlSubscription.swift in Sources */,
 				B84F32D72952DE1E00460B16 /* PHAsset+Extension.swift in Sources */,
 				B84E2C0D2951DF2A000230DD /* AddDataVM.swift in Sources */,
+				B8D245FE2954408800E67AC6 /* ImagePreviewVC.swift in Sources */,
 				B84E2C072951A69E000230DD /* Array+Extension.swift in Sources */,
 				B84E2BD6295175D7000230DD /* UIStackView+Extension.swift in Sources */,
 				B84F32CD29528C8A00460B16 /* UIControlPublisher.swift in Sources */,
@@ -385,6 +403,8 @@
 				B8E1E3352950A78900EE6BD1 /* SceneDelegate.swift in Sources */,
 				B84E2BE029517C5D000230DD /* MainTabVC.swift in Sources */,
 				B84E2BFC29518728000230DD /* ReaderVM.swift in Sources */,
+				B8D2460329544D1900E67AC6 /* Data+Extension.swift in Sources */,
+				B8D246012954415600E67AC6 /* ImagePreviewVM.swift in Sources */,
 				B84E2C182951FDB5000230DD /* UITextField+Extension.swift in Sources */,
 				B88C186C2953664A002871A1 /* DataTableViewDiffableDataSource.swift in Sources */,
 				B84E2BFA2951827F000230DD /* BaseVM.swift in Sources */,

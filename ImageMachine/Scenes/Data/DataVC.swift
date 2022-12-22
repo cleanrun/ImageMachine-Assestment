@@ -29,7 +29,6 @@ final class DataVC: BaseVC {
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        viewModel = DataVM(vc: self)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -39,7 +38,7 @@ final class DataVC: BaseVC {
     
     override func setupUI() {
         super.setupUI()
-        title = "Data"
+        title = "Machines"
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add,
                                                             target: self,
@@ -114,5 +113,18 @@ extension DataVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         viewModel.routeToDetailData(viewModel.machines[indexPath.row])
         tableView.deselectRow(at: indexPath, animated: true)
+        
+        for image in viewModel.machines[indexPath.row].images {
+            let beforeCompressedNsData = NSData(data: image)
+            let bcf = ByteCountFormatter()
+            bcf.allowedUnits = [.useMB] // optional: restricts the units to MB only
+            bcf.countStyle = .file
+            let beforeCompressedSize = bcf.string(fromByteCount: Int64(beforeCompressedNsData.count))
+            print("before compressed " + beforeCompressedSize)
+            
+            let afterCompressedNsData = try! beforeCompressedNsData.compressed(using: .lz4)
+            let afterCompressedSize = bcf.string(fromByteCount: Int64(afterCompressedNsData.count))
+            print("after compressed " + afterCompressedSize)
+        }
     }
 }

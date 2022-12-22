@@ -23,7 +23,7 @@ final class DataDetailVM: BaseVM {
     @Published var type: String = ""
     @Published var qrNumber: Int = 0
     @Published var maintenanceDate: Date = Date()
-    @Published var images: [UIImage] = []
+    @Published var images: [Data] = []
     
     init(vc: DataDetailVC? = nil, model: MachineModel) {
         self.viewController = vc
@@ -33,7 +33,7 @@ final class DataDetailVM: BaseVM {
         self.type = model.type
         self.qrNumber = model.qrNumber
         self.maintenanceDate = model.maintenanceDate
-        self.images = model.images.transformToUIImage()
+        self.images = model.images
     }
     
     func saveEdittedData() {
@@ -42,7 +42,13 @@ final class DataDetailVM: BaseVM {
                                         type: type,
                                         qrNumber: model.qrNumber,
                                         maintenanceDate: maintenanceDate,
-                                        images: images.transformToData())
+                                        images: images)
         dataManager.editMachine(edittedModel)
+    }
+    
+    func showImagePreviewModal(forImageAt indexPathRow: Int) {
+        let imageData = images[indexPathRow]
+        let vc = ImagePreviewVC(imageData: imageData)
+        viewController?.present(vc, animated: true)
     }
 }

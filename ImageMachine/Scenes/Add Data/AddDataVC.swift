@@ -10,8 +10,8 @@ import SwiftUI
 
 final class AddDataVC: BaseVC {
     
-    private typealias DataSource = UICollectionViewDiffableDataSource<Int, UIImage>
-    private typealias Snapshot = NSDiffableDataSourceSnapshot<Int, UIImage>
+    private typealias DataSource = UICollectionViewDiffableDataSource<Int, Data>
+    private typealias Snapshot = NSDiffableDataSourceSnapshot<Int, Data>
     
     private var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
@@ -109,13 +109,12 @@ final class AddDataVC: BaseVC {
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        viewModel = AddDataVM(vc: self)
     }
     
     override func setupUI() {
         super.setupUI()
         dismissKeyboardWhenViewIsTapped()
-        title = "Add Data"
+        title = "Add Machine"
         navigationItem.largeTitleDisplayMode = .never
         
         containerStackView.addArrangedSubviews(nameField, typeField, qrField, dateField, addImagesButton, imagesCollectionView)
@@ -159,7 +158,12 @@ final class AddDataVC: BaseVC {
         imagesCollectionView.register(ImageCell.self, forCellWithReuseIdentifier: ImageCell.REUSABLE_IDENTIFIER)
         dataSource = DataSource(collectionView: imagesCollectionView, cellProvider: { [unowned self] collectionView, indexPath, itemIdentifier in
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ImageCell.REUSABLE_IDENTIFIER, for: indexPath) as! ImageCell
-            cell.setImage(viewModel.images[indexPath.row])
+//            if let notDownsampled = UIImage(data: viewModel.images[indexPath.row]) {
+//                cell.setImage(notDownsampled)
+//            }
+            if let image = viewModel.images[indexPath.row].createDownsampledImage(to: CGSize(width: 100, height: 100)) {
+                cell.setImage(image)
+            }
             return cell
         })
     }

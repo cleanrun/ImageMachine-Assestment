@@ -11,11 +11,15 @@ import Photos
 extension PHAsset {
     var uiImage: UIImage {
         var thumbnail = UIImage()
-        let imageManager = PHCachingImageManager()
+        let imageManager = PHImageManager()
+        let option = PHImageRequestOptions()
+        option.resizeMode = .exact
+        option.deliveryMode = .highQualityFormat
+        option.isSynchronous = true
         imageManager.requestImage(for: self,
-                                  targetSize: CGSize(width: 100, height: 100),
-                                  contentMode: .aspectFit,
-                                  options: nil) { image, _ in
+                                  targetSize: PHImageManagerMaximumSize,
+                                  contentMode: .default,
+                                  options: option) { image, _ in
             thumbnail = image!
         }
         return thumbnail

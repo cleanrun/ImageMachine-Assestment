@@ -10,7 +10,7 @@ import UIKit
 extension Array where Element == UIImage {
     func transformToData() -> [Data] {
         self.compactMap {
-            $0.pngData()
+            $0.jpegData(compressionQuality: 0.5)
         }
     }
 }
