@@ -146,9 +146,8 @@ final class DataDetailVC: BaseVC {
         imagesCollectionView.register(ImageCell.self, forCellWithReuseIdentifier: ImageCell.REUSABLE_IDENTIFIER)
         dataSource = DataSource(collectionView: imagesCollectionView, cellProvider: { [unowned self] collectionView, indexPath, itemIdentifier in
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ImageCell.REUSABLE_IDENTIFIER, for: indexPath) as! ImageCell
-            if let image = viewModel.images[indexPath.row].imageData.createDownsampledImage(to: CGSize(width: 100, height: 100)) {
-                cell.setImage(image)
-            }
+            cell.setImageModel(viewModel.images.value[indexPath.row])
+            cell.delegate = viewModel
             return cell
         })
     }
@@ -175,16 +174,16 @@ final class DataDetailVC: BaseVC {
         editAndSaveButton
             .publisher(for: .touchUpInside)
             .sink { [unowned self] _ in
-                if self.viewModel.formType == .detail {
+                if self.viewModel.formType.value == .detail {
                     self.dismissKeyboardWhenViewIsTapped()
-                    self.viewModel.formType = .edit
+                    self.viewModel.formType.send(.edit)
                 } else {
                     self.removeKeyboardDismissHandler()
                     self.viewModel.saveEdittedData()
-                    self.viewModel.formType = .detail
+                    self.viewModel.formType.send(.detail)
                 }
                 
-                self.editAndSaveButton.setTitle(self.viewModel.formType == .detail ? "Edit" : "Save", for: .normal)
+                self.editAndSaveButton.setTitle(self.viewModel.formType.value == .detail ? "Edit" : "Save", for: .normal)
             }.store(in: &disposables)
         
         viewModel
@@ -200,27 +199,36 @@ final class DataDetailVC: BaseVC {
             }.store(in: &disposables)
         
         viewModel
-            .$images
+            .images
             .sink { [unowned self] value in
                 self.setupSnapshot()
             }.store(in: &disposables)
         
         viewModel
-            .$formType
+            .formType
             .sink { [unowned self] value in
                 let enabled = value == .edit
                 self.nameField.isFieldEnabled(enabled)
                 self.typeField.isFieldEnabled(enabled)
                 self.dateField.isFieldEnabled(enabled)
+                self.toggleDeleteButtonOnCell(enabled)
             }.store(in: &disposables)
     }
     
     private func setupSnapshot() {
-        let imageDatas = viewModel.images.compactMap { $0.imageData }
+        let imageDatas = viewModel.images.value.compactMap { $0.imageData }
         var snapshot = Snapshot()
         snapshot.appendSections([0])
         snapshot.appendItems(imageDatas)
         dataSource.apply(snapshot, animatingDifferences: true)
+    }
+    
+    private func toggleDeleteButtonOnCell(_ enabled: Bool) {
+        for (index, _) in viewModel.images.value.enumerated() {
+            if let cell = imagesCollectionView.cellForItem(at: IndexPath(row: index, section: 0)) as? ImageCell {
+                cell.enableDeleteButton(enabled)
+            }
+        }
     }
     
 }

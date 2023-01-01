@@ -163,9 +163,9 @@ final class AddDataVC: BaseVC {
         imagesCollectionView.register(ImageCell.self, forCellWithReuseIdentifier: ImageCell.REUSABLE_IDENTIFIER)
         dataSource = DataSource(collectionView: imagesCollectionView, cellProvider: { [unowned self] collectionView, indexPath, itemIdentifier in
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ImageCell.REUSABLE_IDENTIFIER, for: indexPath) as! ImageCell
-            if let image = viewModel.images[indexPath.row].imageData.createDownsampledImage(to: CGSize(width: 100, height: 100)) {
-                cell.setImage(image)
-            }
+            cell.setImageModel(viewModel.images.value[indexPath.row])
+            cell.enableDeleteButton(true)
+            cell.delegate = viewModel
             return cell
         })
     }
@@ -226,14 +226,14 @@ final class AddDataVC: BaseVC {
             }.store(in: &disposables)
         
         viewModel
-            .$images
+            .images
             .sink { [unowned self] value in
                 self.setupSnapshot()
             }.store(in: &disposables)
     }
     
     private func setupSnapshot() {
-        let imageDatas = viewModel.images.compactMap { $0.imageData }
+        let imageDatas = viewModel.images.value.map { $0.imageData }
         var snapshot = Snapshot()
         snapshot.appendSections([0])
         snapshot.appendItems(imageDatas)

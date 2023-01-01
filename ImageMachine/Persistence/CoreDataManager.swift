@@ -74,6 +74,7 @@ final class CoreDataManager {
             entity.setValue(model.name, forKey: #keyPath(MachineEntity.name))
             entity.setValue(model.type, forKey: #keyPath(MachineEntity.type))
             entity.setValue(model.maintenanceDate, forKey: #keyPath(MachineEntity.maintenanceDate))
+            entity.setValue(model.imageFileNames, forKey: #keyPath(MachineEntity.imageFileNames))
             stack.saveContext()
         }
     }
@@ -96,7 +97,7 @@ final class CoreDataManager {
         return requestResult
     }
     
-    private func deleteStoredImage(for id: String) {
+    func deleteStoredImage(for id: String) {
         let fileManager = FileManager.default
         let url = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent(id)
         do {

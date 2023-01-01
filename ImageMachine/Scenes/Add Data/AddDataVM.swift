@@ -18,11 +18,11 @@ final class AddDataVM: BaseVM {
     @Published var type: String = ""
     @Published var qrNumber: Int = 0
     @Published var maintenanceDate: Date = Date()
-    @Published var images: [ImageModel] = []
+    private(set) var images = CurrentValueSubject<[ImageModel], Never>([])
     
     lazy var validation: AnyPublisher<Bool, Never> = {
         Publishers
-            .CombineLatest4($name, $type, $qrNumber, $images)
+            .CombineLatest4($name, $type, $qrNumber, images)
             .map { nameValue, typeValue, qrValue, imagesValue in
                 (!nameValue.isEmpty) && (!typeValue.isEmpty) && (qrValue != 0) && (!imagesValue.isEmpty)
             }.eraseToAnyPublisher()
@@ -42,7 +42,7 @@ final class AddDataVM: BaseVM {
             return
         }
         
-        for image in images {
+        for image in images.value {
             do {
                 try image.imageData.storeToDisk(id: image.id)
             } catch {
@@ -51,7 +51,7 @@ final class AddDataVM: BaseVM {
             }
         }
         
-        let imageFileNames = images.compactMap { $0.id }
+        let imageFileNames = images.value.compactMap { $0.id }
         let machine = MachineModel(name: name, type: type, qrNumber: qrNumber, maintenanceDate: maintenanceDate, imageFileNames: imageFileNames)
         dataManager.saveMachine(machine)
         viewController?.navigationController?.popViewController(animated: true)
@@ -113,13 +113,23 @@ final class AddDataVM: BaseVM {
 extension AddDataVM: PHPickerViewControllerDelegate {
     func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
         picker.dismiss(animated: true) { [unowned self] in
-            self.images.removeAll()
+            self.images.send([])
+            var imageArray = [ImageModel]()
             let imageItems = results.compactMap { $0.assetIdentifier }
             let fetchResult = PHAsset.fetchAssets(withLocalIdentifiers: imageItems, options: nil)
             fetchResult.enumerateObjects { object, index, stop in
                 let imageModel = ImageModel(id: "image_\(UUID().uuidString)", imageData: object.uiImage.jpegData(compressionQuality: 0.5)!)
-                self.images.append(imageModel)
+                imageArray.append(imageModel)
             }
+            self.images.send(imageArray)
         }
+    }
+}
+
+extension AddDataVM: ImageCellDelegate {
+    func onDelete(for model: ImageModel) {
+        var updatedArray = images.value
+        updatedArray.removeAll(where: { $0.id == model.id })
+        images.send(updatedArray)
     }
 }
