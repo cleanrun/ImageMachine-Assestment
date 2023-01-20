@@ -8,6 +8,10 @@
 import Foundation
 import CoreData
 
+struct CoreDataManagerDependencyKey: DependencyKey {
+    static var currentValue: CoreDataManager = CoreDataManager()
+}
+
 final class CoreDataManager {
     
     static let current = CoreDataManager()
@@ -15,7 +19,7 @@ final class CoreDataManager {
     private let stack: CoreDataStack
     let managedContext: NSManagedObjectContext
     
-    private init() {
+    init() {
         stack = CoreDataStack()
         managedContext = stack.managedContext
     }

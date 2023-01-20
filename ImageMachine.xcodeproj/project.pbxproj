@@ -7,16 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		ABA31422297ADA0C009DD682 /* DataListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA31421297ADA0C009DD682 /* DataListView.swift */; };
+		ABA31424297ADA1A009DD682 /* DataListProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA31423297ADA1A009DD682 /* DataListProtocols.swift */; };
+		ABA31426297ADA23009DD682 /* DataListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA31425297ADA23009DD682 /* DataListRouter.swift */; };
+		ABA31428297ADA2B009DD682 /* DataListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA31427297ADA2B009DD682 /* DataListInteractor.swift */; };
+		ABA3142A297ADA35009DD682 /* DataListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA31429297ADA35009DD682 /* DataListPresenter.swift */; };
+		ABA3142D297ADA89009DD682 /* DependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA3142C297ADA89009DD682 /* DependencyContainer.swift */; };
+		ABA3142F297ADAD4009DD682 /* DependencyKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA3142E297ADAD4009DD682 /* DependencyKey.swift */; };
+		ABA31431297ADADC009DD682 /* Dependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA31430297ADADC009DD682 /* Dependency.swift */; };
+		ABA31433297AF7D4009DD682 /* UIApplication+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA31432297AF7D4009DD682 /* UIApplication+Extension.swift */; };
 		B84E2BD429517453000230DD /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84E2BD329517453000230DD /* UIView+Extension.swift */; };
 		B84E2BD6295175D7000230DD /* UIStackView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84E2BD5295175D7000230DD /* UIStackView+Extension.swift */; };
 		B84E2BD929517798000230DD /* Machine.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B84E2BD729517798000230DD /* Machine.xcdatamodeld */; };
 		B84E2BDB295178F4000230DD /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84E2BDA295178F4000230DD /* CoreDataStack.swift */; };
 		B84E2BDD29517B02000230DD /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84E2BDC29517B02000230DD /* CoreDataManager.swift */; };
 		B84E2BE029517C5D000230DD /* MainTabVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84E2BDF29517C5D000230DD /* MainTabVC.swift */; };
-		B84E2BE529517C98000230DD /* DataVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84E2BE429517C98000230DD /* DataVC.swift */; };
+		B84E2BE529517C98000230DD /* DataListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84E2BE429517C98000230DD /* DataListVC.swift */; };
 		B84E2BE729517CA4000230DD /* ReaderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84E2BE629517CA4000230DD /* ReaderVC.swift */; };
 		B84E2BED29517D1E000230DD /* DataDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84E2BEC29517D1E000230DD /* DataDetailVC.swift */; };
-		B84E2BF52951801F000230DD /* DataVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84E2BF42951801F000230DD /* DataVM.swift */; };
+		B84E2BF52951801F000230DD /* DataListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84E2BF42951801F000230DD /* DataListVM.swift */; };
 		B84E2BF729518206000230DD /* BaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84E2BF629518206000230DD /* BaseVC.swift */; };
 		B84E2BFA2951827F000230DD /* BaseVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84E2BF92951827F000230DD /* BaseVM.swift */; };
 		B84E2BFC29518728000230DD /* ReaderVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84E2BFB29518728000230DD /* ReaderVM.swift */; };
@@ -51,16 +60,25 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		ABA31421297ADA0C009DD682 /* DataListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataListView.swift; sourceTree = "<group>"; };
+		ABA31423297ADA1A009DD682 /* DataListProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataListProtocols.swift; sourceTree = "<group>"; };
+		ABA31425297ADA23009DD682 /* DataListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataListRouter.swift; sourceTree = "<group>"; };
+		ABA31427297ADA2B009DD682 /* DataListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataListInteractor.swift; sourceTree = "<group>"; };
+		ABA31429297ADA35009DD682 /* DataListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataListPresenter.swift; sourceTree = "<group>"; };
+		ABA3142C297ADA89009DD682 /* DependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyContainer.swift; sourceTree = "<group>"; };
+		ABA3142E297ADAD4009DD682 /* DependencyKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyKey.swift; sourceTree = "<group>"; };
+		ABA31430297ADADC009DD682 /* Dependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dependency.swift; sourceTree = "<group>"; };
+		ABA31432297AF7D4009DD682 /* UIApplication+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extension.swift"; sourceTree = "<group>"; };
 		B84E2BD329517453000230DD /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		B84E2BD5295175D7000230DD /* UIStackView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Extension.swift"; sourceTree = "<group>"; };
 		B84E2BD829517798000230DD /* Machine.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Machine.xcdatamodel; sourceTree = "<group>"; };
 		B84E2BDA295178F4000230DD /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		B84E2BDC29517B02000230DD /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		B84E2BDF29517C5D000230DD /* MainTabVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabVC.swift; sourceTree = "<group>"; };
-		B84E2BE429517C98000230DD /* DataVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataVC.swift; sourceTree = "<group>"; };
+		B84E2BE429517C98000230DD /* DataListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataListVC.swift; sourceTree = "<group>"; };
 		B84E2BE629517CA4000230DD /* ReaderVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReaderVC.swift; sourceTree = "<group>"; };
 		B84E2BEC29517D1E000230DD /* DataDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataDetailVC.swift; sourceTree = "<group>"; };
-		B84E2BF42951801F000230DD /* DataVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataVM.swift; sourceTree = "<group>"; };
+		B84E2BF42951801F000230DD /* DataListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataListVM.swift; sourceTree = "<group>"; };
 		B84E2BF629518206000230DD /* BaseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseVC.swift; sourceTree = "<group>"; };
 		B84E2BF92951827F000230DD /* BaseVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseVM.swift; sourceTree = "<group>"; };
 		B84E2BFB29518728000230DD /* ReaderVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReaderVM.swift; sourceTree = "<group>"; };
@@ -107,6 +125,36 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		ABA3141F297AD9DD009DD682 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				ABA31420297AD9F9009DD682 /* Data List */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		ABA31420297AD9F9009DD682 /* Data List */ = {
+			isa = PBXGroup;
+			children = (
+				ABA31423297ADA1A009DD682 /* DataListProtocols.swift */,
+				ABA31421297ADA0C009DD682 /* DataListView.swift */,
+				ABA31427297ADA2B009DD682 /* DataListInteractor.swift */,
+				ABA31429297ADA35009DD682 /* DataListPresenter.swift */,
+				ABA31425297ADA23009DD682 /* DataListRouter.swift */,
+			);
+			path = "Data List";
+			sourceTree = "<group>";
+		};
+		ABA3142B297ADA61009DD682 /* Depedency Injection */ = {
+			isa = PBXGroup;
+			children = (
+				ABA3142C297ADA89009DD682 /* DependencyContainer.swift */,
+				ABA3142E297ADAD4009DD682 /* DependencyKey.swift */,
+				ABA31430297ADADC009DD682 /* Dependency.swift */,
+			);
+			path = "Depedency Injection";
+			sourceTree = "<group>";
+		};
 		B825FAE42951721E009D4E4A /* Life Cycle */ = {
 			isa = PBXGroup;
 			children = (
@@ -153,6 +201,7 @@
 		B84E2BD0295172C2000230DD /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				ABA3142B297ADA61009DD682 /* Depedency Injection */,
 				B84E2C122951F0D2000230DD /* Preview Provider */,
 				B84E2BF82951826E000230DD /* Base */,
 				B84F32CB29528C7700460B16 /* Combine */,
@@ -165,6 +214,7 @@
 		B84E2BD1295172D2000230DD /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				ABA31432297AF7D4009DD682 /* UIApplication+Extension.swift */,
 				B84E2BD329517453000230DD /* UIView+Extension.swift */,
 				B84E2BD5295175D7000230DD /* UIStackView+Extension.swift */,
 				B84E2C172951FDB5000230DD /* UITextField+Extension.swift */,
@@ -189,8 +239,8 @@
 		B84E2BE229517C79000230DD /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				B84E2BE429517C98000230DD /* DataVC.swift */,
-				B84E2BF42951801F000230DD /* DataVM.swift */,
+				B84E2BE429517C98000230DD /* DataListVC.swift */,
+				B84E2BF42951801F000230DD /* DataListVM.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -281,6 +331,7 @@
 			isa = PBXGroup;
 			children = (
 				B8E1E3312950A78900EE6BD1 /* ImageMachine */,
+				ABA3141F297AD9DD009DD682 /* Modules */,
 				B8E1E3302950A78900EE6BD1 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -380,6 +431,8 @@
 			files = (
 				B84E2BDB295178F4000230DD /* CoreDataStack.swift in Sources */,
 				B8D245FC2954181800E67AC6 /* DataDetailVM.swift in Sources */,
+				ABA3142D297ADA89009DD682 /* DependencyContainer.swift in Sources */,
+				ABA31431297ADADC009DD682 /* Dependency.swift in Sources */,
 				B84E2BD929517798000230DD /* Machine.xcdatamodeld in Sources */,
 				B84E2BED29517D1E000230DD /* DataDetailVC.swift in Sources */,
 				B84E2BFF295195AA000230DD /* MachineModel.swift in Sources */,
@@ -392,8 +445,9 @@
 				B84E2C142951F1CF000230DD /* ViewControllerPreviewProvider.swift in Sources */,
 				B84E2BD429517453000230DD /* UIView+Extension.swift in Sources */,
 				B84E2C0F2951E4A8000230DD /* DataListCell.swift in Sources */,
-				B84E2BF52951801F000230DD /* DataVM.swift in Sources */,
-				B84E2BE529517C98000230DD /* DataVC.swift in Sources */,
+				ABA31422297ADA0C009DD682 /* DataListView.swift in Sources */,
+				B84E2BF52951801F000230DD /* DataListVM.swift in Sources */,
+				B84E2BE529517C98000230DD /* DataListVC.swift in Sources */,
 				B84E2C0129519AAA000230DD /* DataArrayTransformer.swift in Sources */,
 				B84F32D52952C59700460B16 /* ImageCell.swift in Sources */,
 				B84E2BF729518206000230DD /* BaseVC.swift in Sources */,
@@ -404,12 +458,18 @@
 				B84E2C072951A69E000230DD /* Array+Extension.swift in Sources */,
 				B84E2BD6295175D7000230DD /* UIStackView+Extension.swift in Sources */,
 				B84F32CD29528C8A00460B16 /* UIControlPublisher.swift in Sources */,
+				ABA31424297ADA1A009DD682 /* DataListProtocols.swift in Sources */,
+				ABA3142A297ADA35009DD682 /* DataListPresenter.swift in Sources */,
+				ABA31428297ADA2B009DD682 /* DataListInteractor.swift in Sources */,
 				B84E2C042951A0B9000230DD /* MachineEntity+CoreDataClass.swift in Sources */,
 				B84E2C112951EF52000230DD /* FormInputView.swift in Sources */,
+				ABA31433297AF7D4009DD682 /* UIApplication+Extension.swift in Sources */,
+				ABA3142F297ADAD4009DD682 /* DependencyKey.swift in Sources */,
 				B84E2BDD29517B02000230DD /* CoreDataManager.swift in Sources */,
 				B8E1E3352950A78900EE6BD1 /* SceneDelegate.swift in Sources */,
 				B84E2BE029517C5D000230DD /* MainTabVC.swift in Sources */,
 				B84E2BFC29518728000230DD /* ReaderVM.swift in Sources */,
+				ABA31426297ADA23009DD682 /* DataListRouter.swift in Sources */,
 				B8D2460329544D1900E67AC6 /* Data+Extension.swift in Sources */,
 				B8D246012954415600E67AC6 /* ImagePreviewVM.swift in Sources */,
 				B84E2C182951FDB5000230DD /* UITextField+Extension.swift in Sources */,

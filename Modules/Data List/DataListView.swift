@@ -1,14 +1,15 @@
 //
-//  DataVC.swift
+//  DataListView.swift
 //  ImageMachine
 //
-//  Created by cleanmac-ada on 20/12/22.
+//  Created by cleanmac on 20/01/23.
 //
 
 import UIKit
+import Combine
 
-final class DataVC: BaseVC {
-    
+final class DataListView: BaseVC, DataListPresenterToViewProtocol {
+
     private typealias DataSource = DataTableViewDiffableDataSource
     private typealias Snapshot = NSDiffableDataSourceSnapshot<Int, MachineModel>
     
@@ -19,24 +20,11 @@ final class DataVC: BaseVC {
         return tableView
     }()
     
-    private var viewModel: DataVM!
+    var presenter: DataListViewToPresenterProtocol!
     private var dataSource: DataSource!
     
-    init() {
-        super.init(nibName: nil, bundle: nil)
-        viewModel = DataVM(vc: self)
-    }
-    
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        viewModel.getAllData()
-    }
-    
-    override func setupUI() {
+    override func loadView() {
+        super.loadView()
         super.setupUI()
         title = "Machines"
         navigationController?.navigationBar.prefersLargeTitles = true
@@ -61,57 +49,53 @@ final class DataVC: BaseVC {
         ])
         
         dataSource = DataSource(tableView: dataTableView,
-                                cellProvider: { [unowned self] tableView, indexPath, itemIdentifier in
+                                cellProvider: { tableView, indexPath, item in
             let cell = tableView.dequeueReusableCell(withIdentifier: DataListCell.REUSE_IDENTIFIER) as! DataListCell
-            let model = self.viewModel.machines[indexPath.row]
-            cell.setupContents(model)
+            cell.setupContents(item)
             return cell
         })
         dataSource.deleteHandler = { [unowned self] source, model in
-            self.viewModel.showDeleteConfirmationAlert {
-                self.viewModel.deleteData(model.machineId)
-                var currentSnapshot = source.snapshot()
-                currentSnapshot.deleteItems([model])
-                source.apply(currentSnapshot)
-            }
+            self.presenter.deleteMachine(with: model.machineId)
         }
     }
     
-    override func setupBindings() {
-        viewModel.$machines
-            .receive(on: RunLoop.main)
-            .sink { [unowned self] _ in
-                self.setupSnapshot()
-            }.store(in: &disposables)
-    }
-    
-    private func setupSnapshot() {
+    private func setupSnapshot(using machines: [MachineModel]) {
         var snapshot = Snapshot()
         snapshot.appendSections([0])
-        snapshot.appendItems(viewModel.machines)
+        snapshot.appendItems(machines)
         dataSource.apply(snapshot, animatingDifferences: true)
+    }
+    
+    func observeMachineList(subject: CurrentValueSubject<[MachineModel], Never>) {
+        subject
+            .receive(on: RunLoop.main)
+            .sink { [weak self] value in
+                self?.setupSnapshot(using: value)
+            }.store(in: &disposables)
     }
     
     @objc private func addAction() {
         if checkIfCameraIsAuthorized() {
-            viewModel.routeToAddData()
+            presenter.routeToAddMachine(using: navigationController!)
         } else {
-            viewModel.showCameraNotAuthorizedAlert()
+            presenter.showCameraNotAuthorizedAlert()
         }
     }
     
     @objc private func sortAction() {
-        viewModel.showSortAlert()
+        presenter.showSortAlert()
     }
+
 }
 
-extension DataVC: UITableViewDelegate {
+extension DataListView: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         DataListCell.PREFERRED_HEIGHT
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        viewModel.routeToDetailData(viewModel.machines[indexPath.row])
         tableView.deselectRow(at: indexPath, animated: true)
+        let model = presenter.getMachine(at: indexPath.row)
+        presenter.routeToMachineDetail(using: navigationController!, model)
     }
 }

@@ -1,5 +1,5 @@
 //
-//  DataVM.swift
+//  DataListVM.swift
 //  ImageMachine
 //
 //  Created by cleanmac-ada on 20/12/22.
@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 import Combine
 
-final class DataVM: BaseVM {
+final class DataListVM: BaseVM {
     
     enum SortType {
         case nameAscending
@@ -19,12 +19,12 @@ final class DataVM: BaseVM {
         case defaultOrder
     }
     
-    private weak var viewController: DataVC?
+    private weak var viewController: DataListVC?
     
     @Published private(set) var machines: [MachineModel] = []
     @Published var sortType: SortType = .defaultOrder
     
-    init(vc: DataVC? = nil) {
+    init(vc: DataListVC? = nil) {
         self.viewController = vc
         super.init()
         

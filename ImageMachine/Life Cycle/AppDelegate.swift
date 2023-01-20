@@ -13,6 +13,7 @@ import AVFoundation
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         DataArrayTransformer.register()
+        setupDependencies()
         requestCameraPermission()
         return true
     }
@@ -27,6 +28,11 @@ import AVFoundation
         AVCaptureDevice.requestAccess(for: .video, completionHandler: { granted in
             
         })
+    }
+    
+    private func setupDependencies() {
+        DependencyContainer.setDepedency(initialValue: CoreDataManager(),
+                                         key: CoreDataManagerDependencyKey.self)
     }
 }
 
