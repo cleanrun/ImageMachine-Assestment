@@ -35,4 +35,22 @@ extension UIApplication {
         
         return topVc
     }
+    
+    func getSelectedTabNavigationController() -> UINavigationController? {
+        var navVc: UINavigationController? = nil
+        var tabBar: UITabBarController? = nil
+        
+        for scene in connectedScenes {
+            if let windowScene = scene as? UIWindowScene {
+                for window in windowScene.windows {
+                    if window.isKeyWindow {
+                        tabBar = window.rootViewController as? UITabBarController
+                    }
+                }
+            }
+        }
+        
+        navVc = tabBar?.selectedViewController as? UINavigationController
+        return navVc
+    }
 }

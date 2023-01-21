@@ -7,7 +7,6 @@
 
 import Foundation
 import Combine
-import UIKit
 
 final class DataListPresenter: DataListViewToPresenterProtocol {
     weak var view: DataListPresenterToViewProtocol?
@@ -55,13 +54,12 @@ final class DataListPresenter: DataListViewToPresenterProtocol {
         machineList.value[index]
     }
     
-    func routeToAddMachine(using navController: UINavigationController) {
-        router.pushToAddMachine(using: navController)
+    func routeToAddMachine() {
+        router.pushToAddMachine()
     }
     
-    func routeToMachineDetail(using navController: UINavigationController,
-                              _ data: MachineModel) {
-        router.pushToMachineDetail(using: navController, data)
+    func routeToMachineDetail(data: MachineModel) {
+        router.pushToMachineDetail(data: data)
     }
     
     func showDeleteConfirmationAlert(_ id: UUID) {

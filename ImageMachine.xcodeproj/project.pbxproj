@@ -16,6 +16,11 @@
 		ABA3142F297ADAD4009DD682 /* DependencyKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA3142E297ADAD4009DD682 /* DependencyKey.swift */; };
 		ABA31431297ADADC009DD682 /* Dependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA31430297ADADC009DD682 /* Dependency.swift */; };
 		ABA31433297AF7D4009DD682 /* UIApplication+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA31432297AF7D4009DD682 /* UIApplication+Extension.swift */; };
+		ABA31436297B0090009DD682 /* ReaderProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA31435297B0090009DD682 /* ReaderProtocols.swift */; };
+		ABA31438297B009C009DD682 /* ReaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA31437297B009C009DD682 /* ReaderView.swift */; };
+		ABA3143A297B00AA009DD682 /* ReaderInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA31439297B00AA009DD682 /* ReaderInteractor.swift */; };
+		ABA3143C297B00B6009DD682 /* ReaderPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA3143B297B00B6009DD682 /* ReaderPresenter.swift */; };
+		ABA3143E297B00BE009DD682 /* ReaderRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA3143D297B00BE009DD682 /* ReaderRouter.swift */; };
 		B84E2BD429517453000230DD /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84E2BD329517453000230DD /* UIView+Extension.swift */; };
 		B84E2BD6295175D7000230DD /* UIStackView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84E2BD5295175D7000230DD /* UIStackView+Extension.swift */; };
 		B84E2BD929517798000230DD /* Machine.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B84E2BD729517798000230DD /* Machine.xcdatamodeld */; };
@@ -69,6 +74,11 @@
 		ABA3142E297ADAD4009DD682 /* DependencyKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyKey.swift; sourceTree = "<group>"; };
 		ABA31430297ADADC009DD682 /* Dependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dependency.swift; sourceTree = "<group>"; };
 		ABA31432297AF7D4009DD682 /* UIApplication+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extension.swift"; sourceTree = "<group>"; };
+		ABA31435297B0090009DD682 /* ReaderProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReaderProtocols.swift; sourceTree = "<group>"; };
+		ABA31437297B009C009DD682 /* ReaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReaderView.swift; sourceTree = "<group>"; };
+		ABA31439297B00AA009DD682 /* ReaderInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReaderInteractor.swift; sourceTree = "<group>"; };
+		ABA3143B297B00B6009DD682 /* ReaderPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReaderPresenter.swift; sourceTree = "<group>"; };
+		ABA3143D297B00BE009DD682 /* ReaderRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReaderRouter.swift; sourceTree = "<group>"; };
 		B84E2BD329517453000230DD /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		B84E2BD5295175D7000230DD /* UIStackView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Extension.swift"; sourceTree = "<group>"; };
 		B84E2BD829517798000230DD /* Machine.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Machine.xcdatamodel; sourceTree = "<group>"; };
@@ -128,7 +138,11 @@
 		ABA3141F297AD9DD009DD682 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				ABA31441297B13A3009DD682 /* Image Preview */,
+				ABA31434297B0078009DD682 /* Reader */,
 				ABA31420297AD9F9009DD682 /* Data List */,
+				ABA3143F297B1391009DD682 /* Add Data */,
+				ABA31440297B139C009DD682 /* Data Detail */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -153,6 +167,39 @@
 				ABA31430297ADADC009DD682 /* Dependency.swift */,
 			);
 			path = "Depedency Injection";
+			sourceTree = "<group>";
+		};
+		ABA31434297B0078009DD682 /* Reader */ = {
+			isa = PBXGroup;
+			children = (
+				ABA31435297B0090009DD682 /* ReaderProtocols.swift */,
+				ABA31437297B009C009DD682 /* ReaderView.swift */,
+				ABA31439297B00AA009DD682 /* ReaderInteractor.swift */,
+				ABA3143B297B00B6009DD682 /* ReaderPresenter.swift */,
+				ABA3143D297B00BE009DD682 /* ReaderRouter.swift */,
+			);
+			path = Reader;
+			sourceTree = "<group>";
+		};
+		ABA3143F297B1391009DD682 /* Add Data */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Add Data";
+			sourceTree = "<group>";
+		};
+		ABA31440297B139C009DD682 /* Data Detail */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Data Detail";
+			sourceTree = "<group>";
+		};
+		ABA31441297B13A3009DD682 /* Image Preview */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Image Preview";
 			sourceTree = "<group>";
 		};
 		B825FAE42951721E009D4E4A /* Life Cycle */ = {
@@ -331,7 +378,6 @@
 			isa = PBXGroup;
 			children = (
 				B8E1E3312950A78900EE6BD1 /* ImageMachine */,
-				ABA3141F297AD9DD009DD682 /* Modules */,
 				B8E1E3302950A78900EE6BD1 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -355,6 +401,7 @@
 				B84E2BCE2951729B000230DD /* Models */,
 				B825FAE42951721E009D4E4A /* Life Cycle */,
 				B84E2BCD2951728A000230DD /* Scenes */,
+				ABA3141F297AD9DD009DD682 /* Modules */,
 			);
 			path = ImageMachine;
 			sourceTree = "<group>";
@@ -466,13 +513,18 @@
 				ABA31433297AF7D4009DD682 /* UIApplication+Extension.swift in Sources */,
 				ABA3142F297ADAD4009DD682 /* DependencyKey.swift in Sources */,
 				B84E2BDD29517B02000230DD /* CoreDataManager.swift in Sources */,
+				ABA3143E297B00BE009DD682 /* ReaderRouter.swift in Sources */,
 				B8E1E3352950A78900EE6BD1 /* SceneDelegate.swift in Sources */,
 				B84E2BE029517C5D000230DD /* MainTabVC.swift in Sources */,
+				ABA3143C297B00B6009DD682 /* ReaderPresenter.swift in Sources */,
+				ABA31436297B0090009DD682 /* ReaderProtocols.swift in Sources */,
 				B84E2BFC29518728000230DD /* ReaderVM.swift in Sources */,
+				ABA31438297B009C009DD682 /* ReaderView.swift in Sources */,
 				ABA31426297ADA23009DD682 /* DataListRouter.swift in Sources */,
 				B8D2460329544D1900E67AC6 /* Data+Extension.swift in Sources */,
 				B8D246012954415600E67AC6 /* ImagePreviewVM.swift in Sources */,
 				B84E2C182951FDB5000230DD /* UITextField+Extension.swift in Sources */,
+				ABA3143A297B00AA009DD682 /* ReaderInteractor.swift in Sources */,
 				B88C186C2953664A002871A1 /* DataTableViewDiffableDataSource.swift in Sources */,
 				B84E2BFA2951827F000230DD /* BaseVM.swift in Sources */,
 				B853000529549D91003B2295 /* ImageModel.swift in Sources */,

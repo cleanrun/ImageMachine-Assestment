@@ -5,11 +5,11 @@
 //  Created by cleanmac on 20/01/23.
 //
 
-import UIKit
+import Foundation
 import Combine
 
 protocol DataListViewToPresenterProtocol: AnyObject {
-    var view: DataListPresenterToViewProtocol? { get set }
+    /*weak*/ var view: DataListPresenterToViewProtocol? { get set }
     var interactor: DataListPresenterToInteractorProtocol { get set }
     var router: DataListPresenterToRouterProtocol { get set }
     var machineList: CurrentValueSubject<[MachineModel], Never>! { get set }
@@ -19,9 +19,8 @@ protocol DataListViewToPresenterProtocol: AnyObject {
     func sortMachines(_ sortType: DataListVM.SortType)
     func getMachine(at index: Int) -> MachineModel
     
-    func routeToAddMachine(using navController: UINavigationController)
-    func routeToMachineDetail(using navController: UINavigationController,
-                              _ data: MachineModel)
+    func routeToAddMachine()
+    func routeToMachineDetail(data: MachineModel)
     
     func showDeleteConfirmationAlert(_ id: UUID)
     func showCameraNotAuthorizedAlert()
@@ -40,13 +39,12 @@ protocol DataListRouterToPresenter: AnyObject {
 }
 
 protocol DataListPresenterToRouterProtocol: AnyObject {
-    var presenter: DataListRouterToPresenter? { get set }
+    /*weak*/ var presenter: DataListRouterToPresenter? { get set }
     
     static func createModule() -> DataListView
     
-    func pushToAddMachine(using navController: UINavigationController)
-    func pushToMachineDetail(using navController: UINavigationController,
-                             _ data: MachineModel)
+    func pushToAddMachine()
+    func pushToMachineDetail(data: MachineModel)
     
     func presentDeleteConfirmationAlert(_ id: UUID)
     func presentCameraNotAuthorizedAlert()
@@ -61,7 +59,7 @@ protocol DataListPresenterToViewProtocol: AnyObject {
 
 protocol DataListPresenterToInteractorProtocol: AnyObject {
     var dataManager: CoreDataManager { get }
-    var presenter: DataListInteractorToPresenterProtocol? { get set }
+    /*weak*/ var presenter: DataListInteractorToPresenterProtocol? { get set }
     
     func fetchMachines()
     func deleteMachine(with id: UUID)

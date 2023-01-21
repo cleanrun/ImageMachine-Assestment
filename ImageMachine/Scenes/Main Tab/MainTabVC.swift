@@ -16,8 +16,8 @@ final class MainTabVC: UITabBarController {
     
     private func setupViewControllers() {
         viewControllers = [
-            createNavController(for: DataListVC(), title: "Data", icon: "list.bullet"),
-            createNavController(for: ReaderVC(type: .detect), title: "Reader", icon: "qrcode.viewfinder")
+            createNavController(for: DataListRouter.createModule(), title: "Data", icon: "list.bullet"),
+            createNavController(for: ReaderRouter.createModule(for: .detect), title: "Reader", icon: "qrcode.viewfinder")
         ]
         
         tabBar.isTranslucent = true

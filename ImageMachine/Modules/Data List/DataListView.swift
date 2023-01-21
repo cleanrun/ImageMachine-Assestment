@@ -23,6 +23,14 @@ final class DataListView: BaseVC, DataListPresenterToViewProtocol {
     var presenter: DataListViewToPresenterProtocol!
     private var dataSource: DataSource!
     
+    init() {
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("Storyboard initializations is not supported")
+    }
+    
     override func loadView() {
         super.loadView()
         super.setupUI()
@@ -76,7 +84,7 @@ final class DataListView: BaseVC, DataListPresenterToViewProtocol {
     
     @objc private func addAction() {
         if checkIfCameraIsAuthorized() {
-            presenter.routeToAddMachine(using: navigationController!)
+            presenter.routeToAddMachine()
         } else {
             presenter.showCameraNotAuthorizedAlert()
         }
@@ -96,6 +104,6 @@ extension DataListView: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let model = presenter.getMachine(at: indexPath.row)
-        presenter.routeToMachineDetail(using: navigationController!, model)
+        presenter.routeToMachineDetail(data: model)
     }
 }

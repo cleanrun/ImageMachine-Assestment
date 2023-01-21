@@ -8,7 +8,7 @@
 import UIKit
 
 final class DataListRouter: DataListPresenterToRouterProtocol {
-    var presenter: DataListRouterToPresenter?
+    weak var presenter: DataListRouterToPresenter?
     
     static func createModule() -> DataListView {
         let view = DataListView()
@@ -24,21 +24,21 @@ final class DataListRouter: DataListPresenterToRouterProtocol {
         return view
     }
     
-    func pushToAddMachine(using navController: UINavigationController) {
+    func pushToAddMachine() {
         
     }
     
-    func pushToMachineDetail(using navController: UINavigationController, _ data: MachineModel) {
+    func pushToMachineDetail(data: MachineModel) {
         
     }
     
-    func presentDeleteConfirmationAlert() {
+    func presentDeleteConfirmationAlert(_ id: UUID) {
         let alert = UIAlertController(title: "Delete Machine",
                                       message: "Are you sure you want to delete this machine?",
                                       preferredStyle: .alert)
         let yesAction = UIAlertAction(title: "Yes",
-                                      style: .destructive) { _ in
-            //confirmHandler()
+                                      style: .destructive) { [unowned self] _ in
+            self.presenter?.notifyDeleteMachine(id)
         }
         let noAction = UIAlertAction(title: "No",
                                      style: .cancel)
