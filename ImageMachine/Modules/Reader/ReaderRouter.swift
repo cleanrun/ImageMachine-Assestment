@@ -26,7 +26,7 @@ final class ReaderRouter: ReaderPresenterToRouterProtocol {
     }
     
     func dismiss() {
-        UIApplication.shared.getTopViewController()?.presentedViewController?.dismiss(animated: true)
+        UIApplication.shared.getTopViewController()?.dismiss(animated: true)
     }
     
     func presentCameraNotAuthorizedAlert() {

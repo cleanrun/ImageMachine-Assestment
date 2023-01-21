@@ -14,6 +14,8 @@ protocol DataListViewToPresenterProtocol: AnyObject {
     var router: DataListPresenterToRouterProtocol { get set }
     var machineList: CurrentValueSubject<[MachineModel], Never>! { get set }
     
+    func viewDidLoadFired()
+    
     func retrieveMachines()
     func deleteMachine(with id: UUID)
     func sortMachines(_ sortType: DataListVM.SortType)
@@ -53,8 +55,8 @@ protocol DataListPresenterToRouterProtocol: AnyObject {
 
 protocol DataListPresenterToViewProtocol: AnyObject {
     var presenter: DataListViewToPresenterProtocol! { get set }
-    
-    func observeMachineList(subject: CurrentValueSubject<[MachineModel], Never>)
+
+    func observeMachineList(subject: AnyPublisher<[MachineModel], Never>)
 }
 
 protocol DataListPresenterToInteractorProtocol: AnyObject {

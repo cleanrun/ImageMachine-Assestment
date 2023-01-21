@@ -22,6 +22,10 @@ final class DataListPresenter: DataListViewToPresenterProtocol {
         self.router = router
     }
     
+    func viewDidLoadFired() {
+        view?.observeMachineList(subject: machineList.eraseToAnyPublisher())
+    }
+    
     func retrieveMachines() {
         interactor.fetchMachines()
     }
@@ -30,6 +34,7 @@ final class DataListPresenter: DataListViewToPresenterProtocol {
         var updatedValue = machineList.value
         updatedValue.removeAll(where: { $0.machineId == id })
         machineList.send(updatedValue)
+        interactor.deleteMachine(with: id)
     }
     
     func sortMachines(_ sortType: DataListVM.SortType) {

@@ -7,6 +7,8 @@
 
 import UIKit
 
+let kQrNumberDetectedForFillingNewData = NSNotification.Name("kQrNumberDetectedForFillingNewData")
+
 final class ReaderPresenter: ReaderViewToPresenterProtocol {
     weak var view: ReaderPresenterToViewProtocol?
     var interactor: ReaderPresenterToInteractorProtocol
@@ -44,7 +46,8 @@ extension ReaderPresenter: ReaderInteractorToPresenterProtocol {
     }
     
     func noticeQRDetectedForFillingNewData(detectedQr: Int) {
-        // FIXME: Fill the detected QR to the input page
+        NotificationCenter.default.post(name: kQrNumberDetectedForFillingNewData, object: detectedQr)
+        router.dismiss()
     }
 }
 

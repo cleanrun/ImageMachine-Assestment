@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AB66906F297B9CA40011F768 /* AddDataProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB66906E297B9CA40011F768 /* AddDataProtocols.swift */; };
+		AB669071297B9CAF0011F768 /* AddDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB669070297B9CAF0011F768 /* AddDataView.swift */; };
+		AB669073297B9CB90011F768 /* AddDataInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB669072297B9CB90011F768 /* AddDataInteractor.swift */; };
+		AB669075297B9CC00011F768 /* AddDataPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB669074297B9CC00011F768 /* AddDataPresenter.swift */; };
+		AB669077297B9CC70011F768 /* AddDataRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB669076297B9CC70011F768 /* AddDataRouter.swift */; };
 		ABA31422297ADA0C009DD682 /* DataListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA31421297ADA0C009DD682 /* DataListView.swift */; };
 		ABA31424297ADA1A009DD682 /* DataListProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA31423297ADA1A009DD682 /* DataListProtocols.swift */; };
 		ABA31426297ADA23009DD682 /* DataListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA31425297ADA23009DD682 /* DataListRouter.swift */; };
@@ -65,6 +70,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AB66906E297B9CA40011F768 /* AddDataProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDataProtocols.swift; sourceTree = "<group>"; };
+		AB669070297B9CAF0011F768 /* AddDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDataView.swift; sourceTree = "<group>"; };
+		AB669072297B9CB90011F768 /* AddDataInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDataInteractor.swift; sourceTree = "<group>"; };
+		AB669074297B9CC00011F768 /* AddDataPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDataPresenter.swift; sourceTree = "<group>"; };
+		AB669076297B9CC70011F768 /* AddDataRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDataRouter.swift; sourceTree = "<group>"; };
 		ABA31421297ADA0C009DD682 /* DataListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataListView.swift; sourceTree = "<group>"; };
 		ABA31423297ADA1A009DD682 /* DataListProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataListProtocols.swift; sourceTree = "<group>"; };
 		ABA31425297ADA23009DD682 /* DataListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataListRouter.swift; sourceTree = "<group>"; };
@@ -184,6 +194,11 @@
 		ABA3143F297B1391009DD682 /* Add Data */ = {
 			isa = PBXGroup;
 			children = (
+				AB66906E297B9CA40011F768 /* AddDataProtocols.swift */,
+				AB669070297B9CAF0011F768 /* AddDataView.swift */,
+				AB669072297B9CB90011F768 /* AddDataInteractor.swift */,
+				AB669074297B9CC00011F768 /* AddDataPresenter.swift */,
+				AB669076297B9CC70011F768 /* AddDataRouter.swift */,
 			);
 			path = "Add Data";
 			sourceTree = "<group>";
@@ -480,6 +495,7 @@
 				B8D245FC2954181800E67AC6 /* DataDetailVM.swift in Sources */,
 				ABA3142D297ADA89009DD682 /* DependencyContainer.swift in Sources */,
 				ABA31431297ADADC009DD682 /* Dependency.swift in Sources */,
+				AB669077297B9CC70011F768 /* AddDataRouter.swift in Sources */,
 				B84E2BD929517798000230DD /* Machine.xcdatamodeld in Sources */,
 				B84E2BED29517D1E000230DD /* DataDetailVC.swift in Sources */,
 				B84E2BFF295195AA000230DD /* MachineModel.swift in Sources */,
@@ -496,10 +512,12 @@
 				B84E2BF52951801F000230DD /* DataListVM.swift in Sources */,
 				B84E2BE529517C98000230DD /* DataListVC.swift in Sources */,
 				B84E2C0129519AAA000230DD /* DataArrayTransformer.swift in Sources */,
+				AB669071297B9CAF0011F768 /* AddDataView.swift in Sources */,
 				B84F32D52952C59700460B16 /* ImageCell.swift in Sources */,
 				B84E2BF729518206000230DD /* BaseVC.swift in Sources */,
 				B84F32CF29528C9C00460B16 /* UIControlSubscription.swift in Sources */,
 				B84F32D72952DE1E00460B16 /* PHAsset+Extension.swift in Sources */,
+				AB669075297B9CC00011F768 /* AddDataPresenter.swift in Sources */,
 				B84E2C0D2951DF2A000230DD /* AddDataVM.swift in Sources */,
 				B8D245FE2954408800E67AC6 /* ImagePreviewVC.swift in Sources */,
 				B84E2C072951A69E000230DD /* Array+Extension.swift in Sources */,
@@ -515,6 +533,8 @@
 				B84E2BDD29517B02000230DD /* CoreDataManager.swift in Sources */,
 				ABA3143E297B00BE009DD682 /* ReaderRouter.swift in Sources */,
 				B8E1E3352950A78900EE6BD1 /* SceneDelegate.swift in Sources */,
+				AB669073297B9CB90011F768 /* AddDataInteractor.swift in Sources */,
+				AB66906F297B9CA40011F768 /* AddDataProtocols.swift in Sources */,
 				B84E2BE029517C5D000230DD /* MainTabVC.swift in Sources */,
 				ABA3143C297B00B6009DD682 /* ReaderPresenter.swift in Sources */,
 				ABA31436297B0090009DD682 /* ReaderProtocols.swift in Sources */,

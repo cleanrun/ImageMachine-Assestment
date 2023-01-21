@@ -31,6 +31,16 @@ final class DataListView: BaseVC, DataListPresenterToViewProtocol {
         fatalError("Storyboard initializations is not supported")
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        presenter.viewDidLoadFired()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        presenter.retrieveMachines()
+    }
+    
     override func loadView() {
         super.loadView()
         super.setupUI()
@@ -74,7 +84,7 @@ final class DataListView: BaseVC, DataListPresenterToViewProtocol {
         dataSource.apply(snapshot, animatingDifferences: true)
     }
     
-    func observeMachineList(subject: CurrentValueSubject<[MachineModel], Never>) {
+    func observeMachineList(subject: AnyPublisher<[MachineModel], Never>) {
         subject
             .receive(on: RunLoop.main)
             .sink { [weak self] value in

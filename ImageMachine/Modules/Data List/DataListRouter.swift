@@ -25,7 +25,8 @@ final class DataListRouter: DataListPresenterToRouterProtocol {
     }
     
     func pushToAddMachine() {
-        
+        let vc = AddDataRouter.createModule()
+        UIApplication.shared.getSelectedTabNavigationController()?.pushViewController(vc, animated: true)
     }
     
     func pushToMachineDetail(data: MachineModel) {
@@ -81,10 +82,12 @@ final class DataListRouter: DataListPresenterToRouterProtocol {
         let typeDscAction = UIAlertAction(title: "Type (Descending)", style: .default) { [unowned self] _ in
             self.presenter?.notifySortType(.typeDescending)
         }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
         alert.addAction(nameAscAction)
         alert.addAction(nameDscAction)
         alert.addAction(typeAscAction)
         alert.addAction(typeDscAction)
+        alert.addAction(cancelAction)
         UIApplication.shared.getTopViewController()?.present(alert, animated: true)
     }
     

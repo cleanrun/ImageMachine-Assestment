@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ImageModel {
+struct ImageModel: Hashable {
     let id: String
     let imageData: Data
 }

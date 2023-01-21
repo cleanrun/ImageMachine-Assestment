@@ -14,9 +14,9 @@ struct MachineModel: Hashable {
     let type: String
     let qrNumber: Int
     let maintenanceDate: Date
-    let imageFileNames: [String]
+    var imageFileNames: [String]
     
-    init(machineId: UUID = UUID(), name: String, type: String, qrNumber: Int, maintenanceDate: Date, imageFileNames: [String]) {
+    init(machineId: UUID = UUID(), name: String, type: String, qrNumber: Int, maintenanceDate: Date, imageFileNames: [String] = []) {
         self.machineId = machineId
         self.name = name
         self.type = type
@@ -34,6 +34,10 @@ struct MachineModel: Hashable {
         self.imageFileNames = (entity.imageFileNames?.compactMap {
             $0 as String
         })!
+    }
+    
+    mutating func setImageFileNames(names: [String]) {
+        self.imageFileNames = names
     }
 }
 
