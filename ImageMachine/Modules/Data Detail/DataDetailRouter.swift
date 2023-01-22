@@ -32,7 +32,8 @@ final class DataDetailRouter: DataDetailPresenterToRouterProtocol {
     }
     
     func presentImagePreviewModal(_ image: ImageModel) {
-        // FIXME: Present image preview modal
+        let vc = ImagePreviewRouter.createModule(for: image)
+        UIApplication.shared.getTopViewController()?.present(vc, animated: true)
     }
     
     func presentDeleteImageAlert(_ image: ImageModel) {

@@ -15,11 +15,11 @@ final class ReaderView: BaseVC, ReaderPresenterToViewProtocol {
     private(set) var captureSession: AVCaptureSession!
     private(set) var previewLayer: AVCaptureVideoPreviewLayer!
     
-    private let readerType: ReaderVM.ReaderType
+    private let readerType: ReaderType
     
     var presenter: ReaderViewToPresenterProtocol!
     
-    init(readerType: ReaderVM.ReaderType) {
+    init(readerType: ReaderType) {
         self.readerType = readerType
         super.init(nibName: nil, bundle: nil)
     }

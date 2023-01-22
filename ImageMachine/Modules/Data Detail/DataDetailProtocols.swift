@@ -15,7 +15,7 @@ protocol DataDetailViewToPresenterProtocol: AnyObject {
     
     var model: MachineModel! { get }
     
-    var formType: CurrentValueSubject<DataDetailVM.DetailFormType, Never>! { get set }
+    var formType: CurrentValueSubject<DetailFormType, Never>! { get set }
     var name: String! { get set }
     var type: String! { get set }
     var qrNumber: Int! { get set }
@@ -24,8 +24,9 @@ protocol DataDetailViewToPresenterProtocol: AnyObject {
     
     func viewDidLoadFired()
     
-    func getCurrentFormType() -> DataDetailVM.DetailFormType
+    func getCurrentFormType() -> DetailFormType
     func getImages() -> [ImageModel]
+    func getImage(index: Int) -> ImageModel
     
     func setName(_ name: String)
     func setType(_ type: String)
@@ -64,7 +65,7 @@ protocol DataDetailPresenterToViewProtocol: AnyObject {
     var presenter: DataDetailViewToPresenterProtocol! { get set }
     
     func setFieldsInitialValue(_ model: MachineModel)
-    func observeFields(formType: AnyPublisher<DataDetailVM.DetailFormType, Never>,
+    func observeFields(formType: AnyPublisher<DetailFormType, Never>,
                        name: AnyPublisher<String?, Never>,
                        type: AnyPublisher<String?, Never>,
                        qrNumber: AnyPublisher<Int?, Never>,

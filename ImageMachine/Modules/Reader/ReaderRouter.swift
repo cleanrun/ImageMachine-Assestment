@@ -10,7 +10,7 @@ import UIKit
 final class ReaderRouter: ReaderPresenterToRouterProtocol {
     weak var presenter: ReaderRouterToPresenterProtocol?
     
-    static func createModule(for type: ReaderVM.ReaderType) -> ReaderView {
+    static func createModule(for type: ReaderType) -> ReaderView {
         let view = ReaderView(readerType: type)
         let interactor = ReaderInteractor()
         let router = ReaderRouter()

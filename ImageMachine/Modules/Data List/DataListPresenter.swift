@@ -37,7 +37,7 @@ final class DataListPresenter: DataListViewToPresenterProtocol {
         interactor.deleteMachine(with: id)
     }
     
-    func sortMachines(_ sortType: DataListVM.SortType) {
+    func sortMachines(_ sortType: SortType) {
         var sortedMachines: [MachineModel] = []
         switch sortType {
         case .defaultOrder:
@@ -100,7 +100,7 @@ extension DataListPresenter: DataListRouterToPresenter {
         interactor.deleteMachine(with: id)
     }
     
-    func notifySortType(_ type: DataListVM.SortType) {
+    func notifySortType(_ type: SortType) {
         sortMachines(type)
     }
 }

@@ -190,7 +190,7 @@ final class DataDetailView: BaseVC, DataDetailPresenterToViewProtocol {
         dateField.setDateText(model.maintenanceDate)
     }
     
-    func observeFields(formType: AnyPublisher<DataDetailVM.DetailFormType, Never>,
+    func observeFields(formType: AnyPublisher<DetailFormType, Never>,
                        name: AnyPublisher<String?, Never>,
                        type: AnyPublisher<String?, Never>,
                        qrNumber: AnyPublisher<Int?, Never>,
@@ -257,8 +257,7 @@ extension DataDetailView: UICollectionViewDelegate, UICollectionViewDelegateFlow
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
-        // FIXME: Present image preview modal
-        //presenter.showImagePreviewModal()
+        presenter.showImagePreviewModal(presenter.getImage(index: indexPath.row))
     }
 }
 

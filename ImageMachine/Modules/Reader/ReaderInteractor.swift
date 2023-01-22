@@ -11,7 +11,7 @@ final class ReaderInteractor: ReaderPresenterToInteractorProtocol {
     @Dependency(\.dataManager) var dataManager: CoreDataManager
     weak var presenter: ReaderInteractorToPresenterProtocol?
     
-    func checkDetectedCode(type: ReaderVM.ReaderType, _ value: String) {
+    func checkDetectedCode(type: ReaderType, _ value: String) {
         if let qrNumber = Int(value) {
             if type == .detect {
                 if let entity = dataManager.findMachine(byQrNumber: qrNumber) {

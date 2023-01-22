@@ -18,7 +18,7 @@ protocol DataListViewToPresenterProtocol: AnyObject {
     
     func retrieveMachines()
     func deleteMachine(with id: UUID)
-    func sortMachines(_ sortType: DataListVM.SortType)
+    func sortMachines(_ sortType: SortType)
     func getMachine(at index: Int) -> MachineModel
     
     func routeToAddMachine()
@@ -36,7 +36,7 @@ protocol DataListInteractorToPresenterProtocol: AnyObject {
 }
 
 protocol DataListRouterToPresenter: AnyObject {
-    func notifySortType(_ type: DataListVM.SortType)
+    func notifySortType(_ type: SortType)
     func notifyDeleteMachine(_ id: UUID)
 }
 

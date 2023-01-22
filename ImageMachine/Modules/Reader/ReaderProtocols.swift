@@ -12,7 +12,7 @@ protocol ReaderViewToPresenterProtocol: AnyObject {
     var interactor: ReaderPresenterToInteractorProtocol { get set }
     var router: ReaderPresenterToRouterProtocol { get set }
     
-    func detectCode(type: ReaderVM.ReaderType, _ value: String)
+    func detectCode(type: ReaderType, _ value: String)
     
     func showCameraNotAuthorizedAlert()
 }
@@ -31,7 +31,7 @@ protocol ReaderRouterToPresenterProtocol: AnyObject {
 protocol ReaderPresenterToRouterProtocol: AnyObject {
     /*weak*/ var presenter: ReaderRouterToPresenterProtocol? { get set }
     
-    static func createModule(for: ReaderVM.ReaderType) -> ReaderView
+    static func createModule(for: ReaderType) -> ReaderView
     
     func dismiss()
     
@@ -54,6 +54,6 @@ protocol ReaderPresenterToInteractorProtocol: AnyObject {
     var dataManager: CoreDataManager { get }
     /*weak*/ var presenter: ReaderInteractorToPresenterProtocol? { get set }
     
-    func checkDetectedCode(type: ReaderVM.ReaderType,
+    func checkDetectedCode(type: ReaderType,
                            _ value: String)
 }

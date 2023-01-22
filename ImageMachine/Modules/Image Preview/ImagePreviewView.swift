@@ -1,14 +1,14 @@
 //
-//  ImagePreviewVC.swift
+//  ImagePreviewView.swift
 //  ImageMachine
 //
-//  Created by cleanmac-ada on 22/12/22.
+//  Created by cleanmac on 22/01/23.
 //
 
 import UIKit
+import Combine
 
-final class ImagePreviewVC: BaseVC {
-    
+final class ImagePreviewView: BaseVC, ImagePreviewPresenterToViewProtocol {
     private var imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -23,18 +23,15 @@ final class ImagePreviewVC: BaseVC {
         return navigationBar
     }()
     
-    private var viewModel: ImagePreviewVM!
-    
-    init(imageData: Data) {
-        super.init(nibName: nil, bundle: nil)
-        viewModel = ImagePreviewVM(vc: self, imageData: imageData)
+    var presenter: ImagePreviewViewToPresenterProtocol!
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        presenter.viewDidLoadFired()
     }
     
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-    }
-    
-    override func setupUI() {
+    override func loadView() {
+        super.loadView()
         super.setupUI()
         
         view.addSubviews(navigationBar, imageView)
@@ -57,16 +54,16 @@ final class ImagePreviewVC: BaseVC {
         navigationBar.items = [navigationItem]
     }
     
-    override func setupBindings() {
-        viewModel
-            .$imageData
+    func observeImage(image: AnyPublisher<UIImage?, Never>) {
+        image
+            .receive(on: RunLoop.main)
             .sink { [unowned self] value in
-                self.imageView.image = value?.createDownsampledImage(to: CGSize(width: 800, height: 800))
+                self.imageView.image = value
             }.store(in: &disposables)
     }
     
     @objc private func dismissModal() {
-        dismiss(animated: true)
+        presenter.dismiss()
     }
 
 }

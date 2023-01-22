@@ -15,7 +15,7 @@ final class DataDetailPresenter: DataDetailViewToPresenterProtocol {
     
     var model: MachineModel!
     
-    var formType: CurrentValueSubject<DataDetailVM.DetailFormType, Never>!
+    var formType: CurrentValueSubject<DetailFormType, Never>!
     @Published var name: String!
     @Published var type: String!
     @Published var qrNumber: Int!
@@ -51,12 +51,16 @@ final class DataDetailPresenter: DataDetailViewToPresenterProtocol {
         view?.setFieldsInitialValue(model)
     }
     
-    func getCurrentFormType() -> DataDetailVM.DetailFormType {
+    func getCurrentFormType() -> DetailFormType {
         formType.value
     }
     
     func getImages() -> [ImageModel] {
         images.value
+    }
+    
+    func getImage(index: Int) -> ImageModel {
+        images.value[index]
     }
     
     func setName(_ name: String) {

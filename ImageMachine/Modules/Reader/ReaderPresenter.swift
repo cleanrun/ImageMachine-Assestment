@@ -22,7 +22,7 @@ final class ReaderPresenter: ReaderViewToPresenterProtocol {
         self.router = router
     }
     
-    func detectCode(type: ReaderVM.ReaderType, _ value: String) {
+    func detectCode(type: ReaderType, _ value: String) {
         interactor.checkDetectedCode(type: type, value)
     }
     
