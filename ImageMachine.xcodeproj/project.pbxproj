@@ -26,6 +26,11 @@
 		ABA3143A297B00AA009DD682 /* ReaderInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA31439297B00AA009DD682 /* ReaderInteractor.swift */; };
 		ABA3143C297B00B6009DD682 /* ReaderPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA3143B297B00B6009DD682 /* ReaderPresenter.swift */; };
 		ABA3143E297B00BE009DD682 /* ReaderRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA3143D297B00BE009DD682 /* ReaderRouter.swift */; };
+		ABE2257C297C188000614F14 /* DataDetailProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE2257B297C188000614F14 /* DataDetailProtocols.swift */; };
+		ABE2257E297C189400614F14 /* DataDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE2257D297C189400614F14 /* DataDetailView.swift */; };
+		ABE22580297C18A500614F14 /* DataDetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE2257F297C18A500614F14 /* DataDetailInteractor.swift */; };
+		ABE22582297C18AF00614F14 /* DataDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE22581297C18AF00614F14 /* DataDetailPresenter.swift */; };
+		ABE22584297C18B700614F14 /* DataDetailRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE22583297C18B700614F14 /* DataDetailRouter.swift */; };
 		B84E2BD429517453000230DD /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84E2BD329517453000230DD /* UIView+Extension.swift */; };
 		B84E2BD6295175D7000230DD /* UIStackView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84E2BD5295175D7000230DD /* UIStackView+Extension.swift */; };
 		B84E2BD929517798000230DD /* Machine.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B84E2BD729517798000230DD /* Machine.xcdatamodeld */; };
@@ -89,6 +94,11 @@
 		ABA31439297B00AA009DD682 /* ReaderInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReaderInteractor.swift; sourceTree = "<group>"; };
 		ABA3143B297B00B6009DD682 /* ReaderPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReaderPresenter.swift; sourceTree = "<group>"; };
 		ABA3143D297B00BE009DD682 /* ReaderRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReaderRouter.swift; sourceTree = "<group>"; };
+		ABE2257B297C188000614F14 /* DataDetailProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataDetailProtocols.swift; sourceTree = "<group>"; };
+		ABE2257D297C189400614F14 /* DataDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataDetailView.swift; sourceTree = "<group>"; };
+		ABE2257F297C18A500614F14 /* DataDetailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataDetailInteractor.swift; sourceTree = "<group>"; };
+		ABE22581297C18AF00614F14 /* DataDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataDetailPresenter.swift; sourceTree = "<group>"; };
+		ABE22583297C18B700614F14 /* DataDetailRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataDetailRouter.swift; sourceTree = "<group>"; };
 		B84E2BD329517453000230DD /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		B84E2BD5295175D7000230DD /* UIStackView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Extension.swift"; sourceTree = "<group>"; };
 		B84E2BD829517798000230DD /* Machine.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Machine.xcdatamodel; sourceTree = "<group>"; };
@@ -149,6 +159,7 @@
 			isa = PBXGroup;
 			children = (
 				ABA31441297B13A3009DD682 /* Image Preview */,
+				B84E2BDE29517C08000230DD /* Main Tab */,
 				ABA31434297B0078009DD682 /* Reader */,
 				ABA31420297AD9F9009DD682 /* Data List */,
 				ABA3143F297B1391009DD682 /* Add Data */,
@@ -206,6 +217,11 @@
 		ABA31440297B139C009DD682 /* Data Detail */ = {
 			isa = PBXGroup;
 			children = (
+				ABE2257B297C188000614F14 /* DataDetailProtocols.swift */,
+				ABE2257D297C189400614F14 /* DataDetailView.swift */,
+				ABE2257F297C18A500614F14 /* DataDetailInteractor.swift */,
+				ABE22581297C18AF00614F14 /* DataDetailPresenter.swift */,
+				ABE22583297C18B700614F14 /* DataDetailRouter.swift */,
 			);
 			path = "Data Detail";
 			sourceTree = "<group>";
@@ -230,7 +246,6 @@
 			isa = PBXGroup;
 			children = (
 				B8D245FF2954408C00E67AC6 /* Image Preview */,
-				B84E2BDE29517C08000230DD /* Main Tab */,
 				B84E2BE329517C83000230DD /* Reader */,
 				B84E2BE229517C79000230DD /* Data */,
 				B84E2C092951DF00000230DD /* Add Data */,
@@ -514,11 +529,14 @@
 				B84E2C0129519AAA000230DD /* DataArrayTransformer.swift in Sources */,
 				AB669071297B9CAF0011F768 /* AddDataView.swift in Sources */,
 				B84F32D52952C59700460B16 /* ImageCell.swift in Sources */,
+				ABE22584297C18B700614F14 /* DataDetailRouter.swift in Sources */,
 				B84E2BF729518206000230DD /* BaseVC.swift in Sources */,
 				B84F32CF29528C9C00460B16 /* UIControlSubscription.swift in Sources */,
 				B84F32D72952DE1E00460B16 /* PHAsset+Extension.swift in Sources */,
 				AB669075297B9CC00011F768 /* AddDataPresenter.swift in Sources */,
+				ABE2257E297C189400614F14 /* DataDetailView.swift in Sources */,
 				B84E2C0D2951DF2A000230DD /* AddDataVM.swift in Sources */,
+				ABE22580297C18A500614F14 /* DataDetailInteractor.swift in Sources */,
 				B8D245FE2954408800E67AC6 /* ImagePreviewVC.swift in Sources */,
 				B84E2C072951A69E000230DD /* Array+Extension.swift in Sources */,
 				B84E2BD6295175D7000230DD /* UIStackView+Extension.swift in Sources */,
@@ -547,8 +565,10 @@
 				ABA3143A297B00AA009DD682 /* ReaderInteractor.swift in Sources */,
 				B88C186C2953664A002871A1 /* DataTableViewDiffableDataSource.swift in Sources */,
 				B84E2BFA2951827F000230DD /* BaseVM.swift in Sources */,
+				ABE2257C297C188000614F14 /* DataDetailProtocols.swift in Sources */,
 				B853000529549D91003B2295 /* ImageModel.swift in Sources */,
 				B84E2C052951A0B9000230DD /* MachineEntity+CoreDataProperties.swift in Sources */,
+				ABE22582297C18AF00614F14 /* DataDetailPresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -30,7 +30,8 @@ final class DataListRouter: DataListPresenterToRouterProtocol {
     }
     
     func pushToMachineDetail(data: MachineModel) {
-        
+        let vc = DataDetailRouter.createModule(for: data)
+        UIApplication.shared.getSelectedTabNavigationController()?.pushViewController(vc, animated: true)
     }
     
     func presentDeleteConfirmationAlert(_ id: UUID) {
