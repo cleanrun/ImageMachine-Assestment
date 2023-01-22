@@ -12,10 +12,7 @@ struct CoreDataManagerDependencyKey: DependencyKey {
     static var currentValue: CoreDataManager = CoreDataManager()
 }
 
-final class CoreDataManager {
-    
-    static let current = CoreDataManager()
-    
+struct CoreDataManager {
     private let stack: CoreDataStack
     let managedContext: NSManagedObjectContext
     

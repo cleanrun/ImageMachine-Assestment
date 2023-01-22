@@ -27,12 +27,17 @@ final class AddDataPresenter: AddDataViewToPresenterProtocol {
             }.eraseToAnyPublisher()
     }()
     
-    init(view: AddDataPresenterToViewProtocol,
+    init(qrNumber: Int?,
+         view: AddDataPresenterToViewProtocol,
          interactor: AddDataPresenterToInteractorProtocol,
          router: AddDataPresenterToRouterProtocol) {
         self.view = view
         self.interactor = interactor
         self.router = router
+        
+        if let qrNumber {
+            self.qrNumber = qrNumber
+        }
     }
     
     deinit {
@@ -63,8 +68,8 @@ final class AddDataPresenter: AddDataViewToPresenterProtocol {
         self.maintenanceDate = date
     }
     
-    @objc func setQrNumber(_ qr: Int) {
-        self.qrNumber = qr
+    @objc func setQrNumber(_ notification: Notification) {
+        self.qrNumber = notification.object as? Int
     }
     
     func saveData() {

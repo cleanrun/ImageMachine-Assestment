@@ -77,11 +77,13 @@ final class ReaderRouter: ReaderPresenterToRouterProtocol {
     }
     
     func pushToAddNewData(qrNumber: Int) {
-        // FIXME: Push to add new data page
+        let vc = AddDataRouter.createModule(withQrNumber: qrNumber)
+        UIApplication.shared.getSelectedTabNavigationController()?.pushViewController(vc, animated: true)
     }
     
     func pushToDetailData(model: MachineModel) {
-        // FIXME: Push to detail data page
+        let vc = DataDetailRouter.createModule(for: model)
+        UIApplication.shared.getSelectedTabNavigationController()?.pushViewController(vc, animated: true)
     }
     
 }

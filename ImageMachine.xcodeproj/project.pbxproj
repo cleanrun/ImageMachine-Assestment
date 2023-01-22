@@ -44,7 +44,6 @@
 		B84E2BDD29517B02000230DD /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84E2BDC29517B02000230DD /* CoreDataManager.swift */; };
 		B84E2BE029517C5D000230DD /* MainTabVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84E2BDF29517C5D000230DD /* MainTabVC.swift */; };
 		B84E2BF729518206000230DD /* BaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84E2BF629518206000230DD /* BaseVC.swift */; };
-		B84E2BFA2951827F000230DD /* BaseVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84E2BF92951827F000230DD /* BaseVM.swift */; };
 		B84E2BFF295195AA000230DD /* MachineModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84E2BFE295195AA000230DD /* MachineModel.swift */; };
 		B84E2C0129519AAA000230DD /* DataArrayTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84E2C0029519AAA000230DD /* DataArrayTransformer.swift */; };
 		B84E2C042951A0B9000230DD /* MachineEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84E2C022951A0B9000230DD /* MachineEntity+CoreDataClass.swift */; };
@@ -108,7 +107,6 @@
 		B84E2BDC29517B02000230DD /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		B84E2BDF29517C5D000230DD /* MainTabVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabVC.swift; sourceTree = "<group>"; };
 		B84E2BF629518206000230DD /* BaseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseVC.swift; sourceTree = "<group>"; };
-		B84E2BF92951827F000230DD /* BaseVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseVM.swift; sourceTree = "<group>"; };
 		B84E2BFE295195AA000230DD /* MachineModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MachineModel.swift; sourceTree = "<group>"; };
 		B84E2C0029519AAA000230DD /* DataArrayTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataArrayTransformer.swift; sourceTree = "<group>"; };
 		B84E2C022951A0B9000230DD /* MachineEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MachineEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -302,7 +300,6 @@
 			isa = PBXGroup;
 			children = (
 				B84E2BF629518206000230DD /* BaseVC.swift */,
-				B84E2BF92951827F000230DD /* BaseVM.swift */,
 				B88C186B2953664A002871A1 /* DataTableViewDiffableDataSource.swift */,
 				ABC314B0297D2DB6009A08DB /* Enums.swift */,
 			);
@@ -500,7 +497,6 @@
 				B84E2C182951FDB5000230DD /* UITextField+Extension.swift in Sources */,
 				ABA3143A297B00AA009DD682 /* ReaderInteractor.swift in Sources */,
 				B88C186C2953664A002871A1 /* DataTableViewDiffableDataSource.swift in Sources */,
-				B84E2BFA2951827F000230DD /* BaseVM.swift in Sources */,
 				ABE2257C297C188000614F14 /* DataDetailProtocols.swift in Sources */,
 				B853000529549D91003B2295 /* ImageModel.swift in Sources */,
 				B84E2C052951A0B9000230DD /* MachineEntity+CoreDataProperties.swift in Sources */,

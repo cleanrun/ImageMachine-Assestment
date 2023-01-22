@@ -11,11 +11,12 @@ import PhotosUI
 final class AddDataRouter: AddDataPresenterToRouterProtocol {
     weak var presenter: AddDataRouterToPresenterProtocol?
     
-    static func createModule() -> AddDataView {
+    static func createModule(withQrNumber: Int? = nil) -> AddDataView {
         let view = AddDataView()
         let interactor = AddDataInteractor()
         let router = AddDataRouter()
-        let presenter = AddDataPresenter(view: view,
+        let presenter = AddDataPresenter(qrNumber: withQrNumber,
+                                         view: view,
                                          interactor: interactor,
                                          router: router)
         

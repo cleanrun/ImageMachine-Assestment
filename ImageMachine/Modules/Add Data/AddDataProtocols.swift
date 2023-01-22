@@ -26,7 +26,7 @@ protocol AddDataViewToPresenterProtocol: AnyObject {
     func setName(_ name: String)
     func setType(_ type: String)
     func setMaintenanceDate(_ date: Date)
-    func setQrNumber(_ qr: Int)
+    func setQrNumber(_ notification: Notification)
     
     func saveData()
     func deleteImage(model: ImageModel)
@@ -48,7 +48,7 @@ protocol AddDataRouterToPresenterProtocol: AnyObject {
 protocol AddDataPresenterToRouterProtocol: AnyObject {
     /*weak*/ var presenter: AddDataRouterToPresenterProtocol? { get set }
     
-    static func createModule() -> AddDataView
+    static func createModule(withQrNumber: Int?) -> AddDataView
     
     func finish()
     
